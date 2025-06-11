@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qurate - Innovate. Validate. Create</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Purple Shades */
+            --primary-purple: #7A28CB; /* Main interactive purple */
+            --primary-purple-dark: #5D1F9C; /* Darker shade for hovers, etc. */
+            --primary-purple-light: #E0D6EB; /* Light purple for backgrounds or subtle elements */
+            --primary-purple-very-light: #F5F0FA; /* Very light, almost white, purple */
+
+            /* White and Off-White */
+            --pure-white: #FFFFFF;
+            --off-white-bg: #FDFBFF; /* Slightly off-white for main backgrounds if needed, or pure white */
+
+            /* Text Colors (using purples or white) */
+            --text-dark-purple: #3B115E; /* For primary text on light backgrounds */
+            --text-medium-purple: #6C29A6; /* For secondary text or less emphasis */
+            --text-white: #FFFFFF; /* For text on dark purple backgrounds */
+
+            /* Accents & Trims (using purples or white) */
+            --accent-highlight-purple: #A450E5; /* A brighter purple for accents */
+            --accent-trim-light: var(--primary-purple-light); /* Light trim */
+            --accent-trim-dark: var(--primary-purple-dark); /* Dark trim */
+
+
+            --border-radius: 10px; /* Slightly more minimalist radius */
+            --box-shadow-color: rgba(93, 31, 156, 0.08); /* Shadow based on primary purple */
+            --box-shadow-hover-color: rgba(93, 31, 156, 0.15);
+            --gradient-purple: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
+            --gradient-light-purple: linear-gradient(135deg, var(--primary-purple-light) 0%, var(--primary-purple-very-light) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Manrope', sans-serif; /* Updated font */
+        }
+
+        body {
+            background-color: var(--pure-white); /* Main background white */
+            color: var(--text-dark-purple); /* Default text color */
+            line-height: 1.6; /* Adjusted for Manrope's readability */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif; /* Updated font */
+            font-weight: 600; /* Manrope looks good a bit bolder for headings */
+            line-height: 1.3;
+            color: var(--text-dark-purple); /* Ensuring headings are dark purple */
+        }
+
+        p {
+            font-weight: 400;
+            color: var(--text-medium-purple); /* Paragraphs slightly lighter purple */
+        }
+
+        section {
+            padding: 100px 0; /* Adjusted default section padding */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0; /* Adjusted padding */
+            background-color: rgba(255, 255, 255, 0.95); /* White with slight transparency */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(93, 31, 156, 0.05); /* Subtle purple shadow */
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 3px 20px rgba(93, 31, 156, 0.07);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px; /* Slightly adjusted */
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before { /* Accent trim */
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-highlight-purple); /* Purple accent */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px; /* Adjusted gap */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .nav-links a::after { /* Underline accent */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px; /* Adjusted position */
+            left: 0;
+            background-color: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 22px; /* Adjusted padding */
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.2px; /* Subtle letter spacing */
+            font-size: 14px; /* Adjusted font size */
+            border: 2px solid transparent; /* Base border */
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-purple-light);
+            color: var(--primary-purple);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-purple-very-light);
+            border-color: var(--primary-purple);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            color: var(--text-white);
+            border: none; /* Or 2px solid var(--primary-purple-dark) for definition */
+            box-shadow: 0 4px 12px var(--box-shadow-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-purple-dark); /* Solid color on hover or adjust gradient */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--box-shadow-hover-color);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-purple);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: var(--primary-purple-dark); /* Dark purple for mobile nav */
+            color: var(--text-white);
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 20px; /* Adjusted gap */
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav .nav-links a {
+            color: var(--text-white);
+            font-size: 17px; /* Adjusted font size */
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border */
+        }
+        .mobile-nav .nav-links a::after {
+            background-color: var(--accent-highlight-purple); /* Brighter purple accent */
+        }
+         .mobile-nav .nav-links a:hover {
+            color: var(--primary-purple-light);
+        }
+
+        .mobile-nav .auth-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .mobile-nav .auth-buttons .btn {
+            width: 100%;
+        }
+        .mobile-nav .btn-outline {
+            border-color: var(--primary-purple-light);
+            color: var(--text-white);
+        }
+        .mobile-nav .btn-outline:hover {
+            background-color: var(--accent-highlight-purple);
+            border-color: var(--accent-highlight-purple);
+            color: var(--text-white);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px; /* Adjusted padding */
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-purple-very-light); /* Very light purple background */
+        }
+
+      
+.hero-highlight {
+  font-weight: 700; /* Makes the text bold */
+  color: var(--primary-purple); /* Uses the same purple variable as your logo */
+}
+
+/* Modify your existing .hero rule to look like this */
+.hero {
+    padding: 160px 0 100px;
+    position: relative;
+    overflow: hidden;
+    background: var(--primary-purple-very-light); /* Restored original light background */
+}
+/* === CSS FOR IDEA 2: INTERACTIVE GEOMETRIC SHAPES === */
+
+/* A faint, large rotated square in the background for texture */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background: var(--primary-purple-light);
+    opacity: 0.3;
+    z-index: 0;
+    transform: rotate(45deg);
+}
+
+/* General styling for all moving shapes */
+.shape {
+    position: absolute;
+    z-index: 1;
+    /* This is the key for smooth movement! */
+    transition: transform 0.2s ease-out;
+}
+
+/* --- Shape Styles: Pick and Mix! --- */
+
+/* SHAPE 1: A Triangle */
+.shape-1 {
+    top: 20%;
+    left: 15%;
+    width: 0;
+    height: 0;
+    /* This border trick creates the triangle shape */
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid var(--primary-purple-dark);
+    opacity: 0.35;
+}
+
+/* SHAPE 2: A Rotated Square (Diamond) */
+.shape-2 {
+    bottom: 20%;
+    right: 18%;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-highlight-purple);
+    transform: rotate(45deg);
+    opacity: 0.25;
+}
+
+/* SHAPE 3: An Outlined Ring */
+.shape-3 {
+    top: 50%;
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 8px solid var(--primary-purple);
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+        .hero::before { /* Subtle gradient overlay, now purple based */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 240, 250, 0.5) 0%, rgba(255, 255, 255, 0.7) 100%);
+            z-index: 1;
+        }
+
+
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 750px; /* Adjusted width */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px; /* Adjusted for Manrope */
+            margin-bottom: 20px;
+            color: var(--text-dark-purple);
+            position: relative;
+            display: inline-block;
+            font-weight: 700; /* Bolder for hero title */
+        }
+
+        .hero h1::after { /* Underline for hero title */
+            content: '';
+            position: absolute;
+            width: 80px; /* Adjusted width */
+            height: 3px; /* Adjusted height */
+            background: var(--primary-purple);
+            bottom: -10px; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .strapline {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 20px; /* Adjusted for Manrope */
+            margin-bottom: 25px;
+            font-weight: 400; /* Lighter weight for tagline */
+            color: var(--text-medium-purple);
+        }
+
+        .tagline strong {
+            position: relative;
+            z-index: 1;
+            font-weight: 600; /* Stronger emphasis */
+            color: var(--primary-purple);
+        }
+
+        .tagline strong::after { /* Highlight for strong text, subtle purple */
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 6px; /* Adjusted height */
+            background-color: rgba(164, 80, 229, 0.2); /* Accent highlight purple with alpha */
+            bottom: 1px; /* Adjusted position */
+            left: 0;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: 17px; /* Adjusted for Manrope */
+            margin-bottom: 35px;
+            color: var(--text-medium-purple);
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex-grow: 1;
+            padding: 12px 18px;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--primary-purple-light);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 4px rgba(122, 40, 203, 0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-25px) rotate(10deg); }
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--pure-white); /* White background */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px; /* Adjusted for Manrope */
+            margin-bottom: 15px;
+            color: var(--text-dark-purple);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 17px; /* Adjusted for Manrope */
+            max-width: 650px;
+            margin: 0 auto 50px;
+            color: var(--text-medium-purple);
+        }
+
+        .features-grid {
+            display: grid;
+    /* This is the key change: creates 3 equal columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    /* Increase max-width to give the columns space */
+    max-width: 1100px; 
+    margin: 0 auto;
+}
+
+        .feature-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px 25px; /* Adjusted padding */
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color); /* Updated shadow */
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid var(--primary-purple-very-light); /* Subtle border */
+        }
+
+        .feature-card::before { /* Accent line, purple */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px; /* Thinner line */
+            height: 0;
+            background: var(--gradient-purple);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px); /* Adjusted hover effect */
+            box-shadow: 0 12px 30px var(--box-shadow-hover-color);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-icon {
+            font-size: 36px; /* Adjusted icon size */
+            margin-bottom: 20px;
+            color: var(--primary-purple);
+            background: var(--primary-purple-very-light); /* Light purple background for icon */
+            width: 75px; /* Adjusted size */
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px; /* Adjusted for Manrope */
+            margin-bottom: 12px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-medium-purple);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Research Methods Section */
+        .research-methods {
+            background-color: var(--primary-purple-very-light); /* Light purple background */
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax */
+            gap: 25px; /* Adjusted gap */
+            position: relative;
+            z-index: 2;
+        }
+
+        .method-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent; /* Start with transparent border */
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .method-card::after { /* Background highlight on hover */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--primary-purple-very-light), transparent);
+            transition: height 0.3s ease;
+            z-index: -1;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light); /* Show border on hover */
+        }
+
+        .method-card:hover::after {
+            height: 100%;
+        }
+
+        .method-icon {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .method-icon img { /* Assuming icons are SVGs or PNGs that can be colored or are neutral */
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(93, 31, 156, 0.15)); /* Purple shadow */
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover .method-icon img {
+            transform: scale(1.1);
+        }
+
+        .method-card h3 {
+            margin-bottom: 10px;
+            font-size: 19px; /* Adjusted for Manrope */
+            color: var(--text-dark-purple);
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .method-card p {
+            color: var(--text-medium-purple);
+            font-size: 14px; /* Slightly smaller */
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--pure-white);
+        }
+
+        .steps-container {
+            position: relative;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px; /* Consistent gap */
+            margin-top: 50px;
+            position: relative; /* For pseudo-element line if needed */
+            z-index: 2; /* Ensure steps are above the main line */
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px; /* Adjusted min-width */
+            text-align: center;
+            position: relative;
+            padding: 0 15px; /* Padding for content */
+        }
+
+        /* Connector line styling for large screens using steps-container::before */
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 35px; /* Vertically align with the middle of the numbers */
+            left: 15%; /* Start after the first half of the first element approx */
+            width: 70%; /* Span across the middle elements */
+            height: 2px;
+            background-color: var(--primary-purple-light); /* Light purple line */
+            z-index: 1; /* Behind step numbers */
+            display: none; /* Hidden by default, shown on larger screens */
+        }
+
+        @media (min-width: 992px) {
+            .steps-container::before {
+                display: block;
+            }
+             .step::after { /* Hide individual step lines on large screens */
+                display: none !important;
+            }
+        }
+
+        /* Fallback or mobile line per step if steps-container line is not visible */
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: calc(50% + 40px); /* Adjust based on number size and desired gap */
+            width: 30px; /* Shorter line for mobile */
+            height: 2px;
+            background: var(--primary-purple-light);
+            display: block; /* Show by default for mobile-first */
+        }
+        .step:last-child::after {
+            display: none;
+        }
+
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px; /* Adjusted size */
+            height: 60px;
+            background: var(--gradient-purple);
+            color: var(--text-white);
+            border-radius: 50%;
+            font-size: 22px; /* Adjusted for Manrope */
+            font-weight: 600;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 18px rgba(93, 31, 156, 0.2); /* Purple shadow */
+            position: relative;
+            z-index: 2; /* Above connecting lines */
+        }
+
+        .step h3 {
+            font-size: 20px; /* Adjusted for Manrope */
+            margin-bottom: 12px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .step p {
+            color: var(--text-medium-purple);
+            font-size: 15px;
+        }
+
+        /* User Types Section */
+        .user-types {
+            background-color: var(--primary-purple-very-light); /* Light purple background */
+        }
+
+        .user-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-type-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 35px 25px; /* Adjusted padding */
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: all 0.3s;
+            border: 1px solid var(--primary-purple-very-light); /* Subtle border */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-type-card::before { /* Top accent line */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px; /* Thinner line */
+            background: var(--gradient-purple);
+            transform: scaleX(0); /* Start hidden */
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .user-type-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light);
+        }
+
+        .user-type-card:hover::before {
+            transform: scaleX(1); /* Reveal line on hover */
+        }
+
+        .user-type-icon {
+            width: 80px; /* Adjusted size */
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-purple-very-light);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .user-type-card:hover .user-type-icon {
+            transform: scale(1.1);
+            background-color: var(--primary-purple-light); /* Slightly darker on hover */
+            box-shadow: 0 8px 20px rgba(93, 31, 156, 0.1);
+        }
+
+        .user-type-icon i {
+            font-size: 36px; /* Adjusted icon size */
+            color: var(--primary-purple);
+        }
+
+        .user-type-card h3 {
+            font-size: 22px; /* Adjusted for Manrope */
+            margin-bottom: 15px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .user-type-card p {
+            color: var(--text-medium-purple);
+            margin-bottom: 25px;
+            flex-grow: 1;
+            font-size: 15px;
+        }
+
+        .user-type-card .btn {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--pure-white);
+        }
+
+        .testimonials::before { /* Subtle background pattern, purple tinted */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E0D6EB' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5; /* Adjust opacity of the pattern */
+            z-index: 0;
+        }
+
+
+        .testimonials .container {
+            position: relative;
+            z-index: 1; /* Above pattern */
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px; /* Adjusted padding */
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--primary-purple-very-light);
+            position: relative;
+            display: flex; /* For better alignment of content */
+            flex-direction: column;
+        }
+
+        .testimonial-card::before { /* Quote mark, purple */
+            content: '“'; /* Using a more standard quote */
+            position: absolute;
+            top: 15px; /* Adjusted position */
+            left: 20px;
+            font-size: 80px; /* Adjusted size */
+            font-family: 'Manrope', sans-serif; /* Consistent font */
+            font-weight: 700;
+            color: rgba(122, 40, 203, 0.1); /* Primary purple with low opacity */
+            line-height: 0.8;
+            z-index: 0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light);
+        }
+
+        .testimonial-text {
+            font-style: normal; /* Manrope doesn't always need italic for quotes */
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1; /* Above quote mark */
+            font-size: 15px; /* Adjusted for Manrope */
+            line-height: 1.7;
+            color: var(--text-medium-purple);
+            flex-grow: 1; /* Allow text to take available space */
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: auto; /* Push to bottom */
+        }
+
+        .author-image {
+            width: 50px; /* Adjusted size */
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-purple-very-light);
+            margin-right: 12px;
+            border: 2px solid var(--primary-purple-light); /* Purple border */
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 16px; /* Adjusted for Manrope */
+            margin-bottom: 3px;
+            color: var(--text-dark-purple);
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: var(--text-medium-purple);
+            font-size: 13px; /* Adjusted for Manrope */
+            line-height: 1.2;
+        }
+
+        /* University Endorsements Section */
+        .endorsements {
+            padding: 80px 0; /* Adjusted padding */
+            background-color: var(--primary-purple-very-light); /* Light purple */
+        }
+
+        .endorsements::before, .endorsements::after { /* Subtle top/bottom lines */
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-purple-light), transparent);
+        }
+        .endorsements::before { top: 0; }
+        .endorsements::after { bottom: 0; }
+
+
+        /* === CSS for the new Logo Scroller === */
+
+/* Add this new keyframes animation to the end of your CSS block */
+@keyframes scroll {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logo-scroller {
+    max-width: 100%;
+    overflow: hidden;
+    /* This mask creates the fade-out effect on the edges */
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 3rem; /* Controls the space between logos */
+
+    /* The animation magic! */
+    animation: scroll 40s linear infinite;
+}
+
+/* This is a good practice for accessibility */
+@media (prefers-reduced-motion) {
+    .scroller-inner {
+        animation-play-state: paused;
+    }
+}
+
+.university-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.university-logo img {
+    filter: grayscale(100%) opacity(0.6);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    max-width: 130px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.university-logo:hover img {
+    filter: grayscale(0%) opacity(1);
+}
+
+.university-logo p {
+    font-weight: 500;
+    margin-top: 12px;
+    color: var(--text-medium-purple);
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.university-logo:hover p {
+    color: var(--primary-purple);
+}
+
+.scroller-inner:hover {
+    animation-play-state: paused; /* Pauses the scroll on hover */
+}
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background-color: var(--pure-white); /* White background */
+            padding: 80px 0;
+        }
+
+        .cta::before { /* Purple gradient overlay */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(122, 40, 203, 0.05) 0%, rgba(245, 240, 250, 0.5) 100%);
+            z-index: 0;
+        }
+
+        .cta::after { /* Decorative circle, purple */
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+            opacity: 0.04; /* Very subtle */
+             z-index: 0;
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 1; /* Above decorations */
+        }
+
+        .cta h2 {
+            font-size: 34px; /* Adjusted for Manrope */
+            margin-bottom: 20px;
+            color: var(--text-dark-purple);
+            font-weight: 700;
+        }
+
+        .cta p {
+            font-size: 17px; /* Adjusted for Manrope */
+            margin-bottom: 35px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-medium-purple);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark-purple); /* Dark purple footer */
+            color: var(--primary-purple-very-light); /* Light text on dark background */
+            padding: 70px 0 25px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted minmax */
+            gap: 40px; /* Adjusted gap */
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px; /* Adjusted for Manrope */
+            margin-bottom: 20px;
+            color: var(--pure-white); /* White headings */
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .footer-column h3::after { /* Accent underline, light purple */
+            content: '';
+            position: absolute;
+            width: 25px; /* Shorter */
+            height: 2px;
+            background: var(--accent-highlight-purple); /* Brighter purple */
+            bottom: -8px; /* Adjusted position */
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px; /* Adjusted spacing */
+            transition: transform 0.2s ease;
+        }
+
+        .footer-column ul li:hover {
+            transform: translateX(4px); /* Subtle hover effect */
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: var(--primary-purple-light); /* Light purple links */
+            font-size: 14px; /* Adjusted for Manrope */
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pure-white); /* White on hover */
+        }
+
+        .footer-column ul li a i { /* Icons in footer links, brighter purple */
+            margin-right: 8px;
+            color: var(--accent-highlight-purple);
+            font-size: 15px;
+        }
+
+        .footer-info .logo {
+            color: var(--pure-white); /* White logo in footer */
+            margin-bottom: 15px;
+        }
+
+        .footer-info .logo::before {
+            background: var(--accent-highlight-purple); /* Brighter purple dot */
+        }
+
+        .footer-info p {
+            font-size: 14px; /* Adjusted for Manrope */
+            color: var(--primary-purple-light); /* Light purple text */
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px; /* Adjusted gap */
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; /* Adjusted size */
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            color: var(--pure-white);
+            font-size: 16px; /* Adjusted icon size */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-highlight-purple); /* Brighter purple */
+            color: var(--pure-white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px; /* Adjusted spacing */
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+            font-size: 13px; /* Adjusted for Manrope */
+            color: var(--primary-purple-light); /* Light purple text */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .header-content {
+                /* Ensure logo is on left, button on right if screen is very small before mobile nav kicks in */
+            }
+            .hero h1 {
+                font-size: 38px; /* Responsive hero title */
+            }
+            .tagline {
+                font-size: 18px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .section-subtitle {
+                font-size: 16px;
+                margin-bottom: 35px;
+            }
+
+            .features-grid,
+            .methods-grid,
+            .user-types-grid,
+            .testimonials-grid,
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Adjust minmax for smaller screens */
+            }
+
+            .testimonial-card::before {
+                font-size: 70px;
+                top: 10px;
+                left: 15px;
+            }
+            .testimonial-text {
+                font-size: 14px;
+            }
+            .author-info h4 {
+                font-size: 15px;
+            }
+            .author-info p {
+                font-size: 12px;
+            }
+
+            .university-logos {
+                gap: 25px;
+            }
+            .university-logo img {
+                max-width: 90px;
+                height: 40px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+            .cta p {
+                font-size: 16px;
+            }
+            .footer-content {
+                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ensure footer columns stack well */
+            }
+             .step {
+                min-width: 100%; /* Stack steps on smaller screens */
+                margin-bottom: 30px; /* Add space between stacked steps */
+            }
+            .step:last-child {
+                margin-bottom: 0;
+            }
+            .step::after { /* Ensure mobile lines connect downwards or are not needed if stacked */
+                /* display: none; Depending on stacking, you might remove these lines */
+                 /* If stacking, you might want a vertical line or just remove horizontal ones */
+                left: 50%;
+                bottom: -15px; /* Position below the element */
+                top: auto;
+                width: 2px;
+                height: 15px; /* Short vertical connector */
+                transform: translateX(-50%);
+            }
+             .step:last-child::after {
+                display: none;
+            }
+            .steps-container::before { /* Hide main connector line on small screens */
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+             .hero {
+                padding: 120px 0 80px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .tagline {
+                font-size: 17px;
+            }
+             .hero p {
+                font-size: 15px;
+            }
+            .cta-buttons .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .cta-buttons .btn:last-child {
+                margin-bottom: 0;
+            }
+            .cta-buttons {
+                gap: 10px; /* Reduce gap for stacked buttons */
+            }
+            .section-title {
+                font-size: 26px;
+            }
+            .section-subtitle {
+                font-size: 15px;
+            }
+             .features-grid {
+                 max-width: 90%; /* Allow single column to use more width */
+             }
+            .footer-content {
+                grid-template-columns: 1fr; /* Stack all footer columns */
+                text-align: center; /* Center text in stacked footer columns */
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%); /* Center underline */
+            }
+            .footer-column ul li a {
+                justify-content: center; /* Center footer links */
+            }
+            .footer-info .logo {
+                 justify-content: center; /* Center logo in footer */
+            }
+            .social-links {
+                justify-content: center; /* Center social links */
+            }
+            .waitlist-form {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Qurate</a>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#user-types">For Who?</a>
+                    <a href="#testimonials">Testimonials</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="#cta" class="btn btn-primary">Join Waitlist</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Open Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#user-types">For Who?</a>
+            <a href="#testimonials">Testimonials</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="#cta" class="btn btn-primary">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+                <div class="shape shape-1" data-speed="-2"></div>
+                <div class="shape shape-2" data-speed="1"></div>
+                <div class="shape shape-3" data-speed="3"></div>
+            <div class="container">
+                <div class="hero-content animate__animated animate__fadeInUp">
+                    <h1 class="animate__animated animate__fadeInDown animate__delay-0.5s">Innovate. <em><span class="hero-highlight">Validate.</span></em> Create</h1>
+                    <p class="tagline animate__animated animate__fadeInDown animate__delay-0.8s">Stop guessing. Start <strong>Qurating</strong>. Build businesses people actually want.</p>
+                    <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                        Qurate empowers aspiring entrepreneurs, start-ups, and SMEs to test their concepts with real-world feedback from ideation through to execution; streamlined for ease, speed, and affordability.
+                    </p>
+                    <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-1.2s">
+    <a href="#user-types" class="btn btn-primary">Validate Your Idea</a>
+    <a href="#respondent-cta" class="btn btn-outline">Sign up as a Respondent</a>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Why Choose Qurate?</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    We simplify the complex process of business idea validation, providing you with clear, actionable insights without the traditional cost and time.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div> <h3>Rapid Idea Testing</h3>
+                        <p>Move from concept to feedback in days, not months. Our platform streamlines the setup and execution of validation studies.</p>
+                    </div>
+                     <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.5s">
+                        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Targeted Audience Panels</h3>
+                        <p>Access diverse or niche audience segments to ensure your feedback is relevant and reflects your true market potential.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Clear, Actionable Reports</h3>
+                        <p>Receive easy-to-understand reports highlighting key findings, potential risks, and opportunities for your business idea.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research-methods" class="research-methods">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Leverage Proven Research Methods</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Qurate employs a variety of established research techniques, adapted for quick and effective idea validation.
+                </p>
+                <div class="methods-grid">
+                    <div class="method-card animate__animated animate__zoomIn">
+                        <div class="method-icon"><img src="https://img.icons8.com/fluency/96/survey.png" alt="Survey Icon"></div> <h3>Concept Surveys</h3>
+                        <p>Gauge initial interest, pricing sensitivity, and feature preferences with targeted online surveys.</p>
+                    </div>
+                    <div class="method-card animate__animated animate__zoomIn animate__delay-0.2s">
+                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=ueTUwqU6CWjN&format=png&color=7A28CB" alt="Interview Icon"></div> <h3>Lean Interviews</h3>
+                        <p>Conduct structured interviews to uncover deep insights into customer problems and needs.</p>
+                    </div>
+                    <div class="method-card animate__animated animate__zoomIn animate__delay-0.4s">
+                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=68406&format=png&color=7A28CB" alt="Landing Page Test Icon"></div> <h3>Landing Page Tests</h3>
+                        <p>Measure demand by driving traffic to a test landing page and analyzing conversion signals.</p>
+                    </div>
+                     <div class="method-card animate__animated animate__zoomIn animate__delay-0.6s">
+                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=GoP6RODnGfgO&format=png&color=7A28CB" alt="A/B Test Icon"></div> <h3>Comparative Analysis</h3>
+                        <p>Understand how your idea stacks up against existing solutions or alternative concepts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Validation in Three Simple Steps</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Our platform guides you through a straightforward process to get the answers you need.
+                </p>
+                <div class="steps-container">
+                    <div class="steps">
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.4s">
+                            <div class="step-number">1</div>
+                            <h3>Define Your Idea</h3>
+                            <p>Clearly outline your business concept, target audience, and key assumptions you want to test.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.6s">
+                            <div class="step-number">2</div>
+                            <h3>Launch Your Study</h3>
+                            <p>Choose your research methods, set up your study with our easy-to-use tools, and go live.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.8s">
+                            <div class="step-number">3</div>
+                            <h3>Analyse Results</h3>
+                            <p>Receive a comprehensive report with data visualisations and actionable insights to inform your next move.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="user-types" class="user-types">
+    <div class="container">
+        <h2 class="section-title animate__animated animate__fadeInUp">The Future of Innovation Needs Both Voices. Add Yours</h2>
+        <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+            Qurate connects creators who need feedback with individuals ready to share their insights. Choose your path below.
+        </p>
+        <div class="user-types-grid">
+            <div class="user-type-card animate__animated animate__fadeInUp">
+                <div class="user-type-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>For Innovators & Entrepreneurs</h3>
+                <p>Have a business idea? Minimise risk and make data-driven decisions by testing your concept with a real audience before you invest your time and money.</p>
+                <a href="#cta" class="btn btn-primary">Join the Innovator Waitlist</a>
+            </div>
+
+            <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                <div class="user-type-icon"><i class="fas fa-user-check"></i></div>
+                <h3>For Respondents</h3>
+                <p>Influence the next wave of products and services. Share your valuable opinions on new business ideas and get rewarded (in cold hard cash!) for your time and feedback.</p>
+                <a href="#respondent-cta" class="btn btn-outline">Join the Respondent Panel</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Trusted by Innovators</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Hear what early users are saying about their experience with Qurate.
+                </p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animate__animated animate__flipInX">
+                        <p class="testimonial-text">"Qurate helped me quickly identify the core appeal of my app idea. The feedback was invaluable and saved me months of guesswork!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah L."></div> <div class="author-info">
+                                <h4>Sarah L.</h4>
+                                <p>Aspiring App Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate__animated animate__flipInX animate__delay-0.2s">
+                        <p class="testimonial-text">"As a student, getting real-world validation for my thesis project was crucial. Qurate made it accessible and affordable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mike P."></div> <div class="author-info">
+                                <h4>Mike P.</h4>
+                                <p>University Student</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate__animated animate__flipInX animate__delay-0.4s">
+                        <p class="testimonial-text">"We used Qurate to test a new feature concept and the insights helped us prioritise our development roadmap. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Emily Carter"></div> <div class="author-info">
+                                <h4>Dr. Emily C.</h4>
+                                <p>Product Innovation Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="respondent-cta" class="cta" style="background-color: var(--primary-purple-very-light);">
+    <div class="container">
+        <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
+        <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+            Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
+        </p>
+        <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+            <input type="email" placeholder="Enter your email to become a respondent" required>
+            <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
+        </form>
+    </div>
+</section>
+
+<section class="endorsements">
+    <div class="container">
+        <h2 class="section-title animate__animated animate__fadeInUp">Collaborating with Academic & Startup Ecosystems</h2>
+        <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+            We're proud to support and be supported by institutions fostering innovation. <br>(Logos are for demonstration purposes)
+        </p>
+    </div>
+
+    <div class="logo-scroller">
+        <div class="scroller-inner">
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                <p>University of Oxford</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                <p>University of Cambridge</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                <p>King's College London</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                <p>University of Warwick</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                <p>UCL</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                <p>Imperial College London</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                <p>London School of Economics</p>
+            </div>
+
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                <p>University of Oxford</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                <p>University of Cambridge</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                <p>King's College London</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                <p>University of Warwick</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                <p>UCL</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                <p>Imperial College London</p>
+            </div>
+            <div class="university-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                <p>London School of Economics</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="cta" class="cta">
+    <div class="container">
+        <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters</h2>
+        <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+            Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
+        </p>
+        <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+            <input type="email" placeholder="Enter your email to join the innovator waitlist" required>
+            <button type="submit" class="btn btn-primary">Get Early Access</button>
+        </form>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-info">
+                    <a href="#" class="logo">Qurate</a>
+                    <p>Innovate. Validate. Create</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#user-types"><i class="fas fa-chevron-right"></i> For Who?</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-book-open"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> Validation Tools</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite"></i> Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Qurate. All Rights Reserved. Built with a passion for innovation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            const isOpen = mobileNav.classList.contains('open');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            } else {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = mobileNav.querySelectorAll('.nav-links a, .auth-buttons a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simple Intersection Observer for animations (optional, but adds nice effect)
+        const animatedElements = document.querySelectorAll('.animate__animated');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation classes from Animate.css
+                    // The classes are already in the HTML, this just ensures they trigger on scroll
+                    entry.target.style.visibility = 'visible'; // Make visible before animation
+                } else {
+                    // Optionally remove classes to re-trigger animation on scroll up
+                    // entry.target.classList.remove('animate__fadeInUp', 'animate__fadeInDown', ...);
+                    // entry.target.style.visibility = 'hidden'; // Hide if you want to re-trigger
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => {
+            el.style.visibility = 'hidden'; // Initially hide elements to be animated
+            observer.observe(el);
+        });
+
+        // === JAVASCRIPT FOR INTERACTIVE PARALLAX SHAPES ===
+        // This code should be INSIDE the script tags
+
+        document.addEventListener('mousemove', (e) => {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            const x = (window.innerWidth / 2 - e.pageX);
+            const y = (window.innerHeight / 2 - e.pageY);
+
+            const shapes = hero.querySelectorAll('.shape[data-speed]');
+            
+            shapes.forEach(shape => {
+                const speed = shape.getAttribute('data-speed');
+                
+                const moveX = x * speed / 100;
+                const moveY = y * speed / 100;
+
+                // --- IMPROVEMENT ADDED HERE ---
+                // This checks if the shape is the diamond and makes sure it STAYS rotated
+                if (shape.classList.contains('shape-2')) {
+                    // Apply BOTH the rotation and the new translation
+                    shape.style.transform = `rotate(45deg) translate(${moveX}px, ${moveY}px)`;
+                } else {
+                    // Just apply the translation for the other shapes
+                    shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
