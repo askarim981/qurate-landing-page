@@ -276,18 +276,23 @@
         }
 
         .hero-highlight {
-    /* Create a gradient background and clip it to the text */
-    background: linear-gradient(135deg, var(--accent-highlight-purple) 0%, var(--primary-purple) 100%);
-    -webkit-background-clip: text; /* For Safari/Chrome */
-    -webkit-text-fill-color: transparent; /* For Safari/Chrome */
-    background-clip: text;
-    text-fill-color: transparent;
-    display: inline-block; /* Ensures the gradient applies correctly */
+  color: var(--primary-purple); /* Keeps the text color the same */
+  position: relative;
+  z-index: 1;
 }
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
+
+.hero-highlight::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 12px; /* Adjust the thickness of the highlight */
+  background-color: rgba(164, 80, 229, 0.25); /* A semi-transparent accent color */
+  bottom: 5px; /* Adjust the vertical position */
+  left: 0;
+  z-index: -1;
+  transform: skew(-10deg); /* Adds a little flair */
+  border-radius: 3px;
+}
 
         .hero-content {
             max-width: 750px;
