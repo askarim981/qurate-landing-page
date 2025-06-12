@@ -276,10 +276,14 @@
         }
 
         .hero-highlight {
-            font-weight: 700;
-            color: var(--primary-purple);
-        }
-
+    /* Create a gradient background and clip it to the text */
+    background: linear-gradient(135deg, var(--accent-highlight-purple) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    -webkit-text-fill-color: transparent; /* For Safari/Chrome */
+    background-clip: text;
+    text-fill-color: transparent;
+    display: inline-block; /* Ensures the gradient applies correctly */
+}
         .hero .container {
             position: relative;
             z-index: 2;
