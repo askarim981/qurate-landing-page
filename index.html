@@ -10,30 +10,27 @@
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
         :root {
-            /* Purple Shades */
-            --primary-purple: #7A28CB; /* Main interactive purple */
-            --primary-purple-dark: #5D1F9C; /* Darker shade for hovers, etc. */
-            --primary-purple-light: #E0D6EB; /* Light purple for backgrounds or subtle elements */
-            --primary-purple-very-light: #F5F0FA; /* Very light, almost white, purple */
+            /* Updated Color Scheme */
+            --primary-purple: #3B115E; /* Deep purple for primary elements */
+            --primary-purple-dark: #2A0D45; /* Darker shade for hovers */
+            --primary-purple-light: #E0D6EB; /* Light purple for backgrounds/footer */
+            --primary-purple-very-light: #F5F0FA;
 
-            /* White and Off-White */
             --pure-white: #FFFFFF;
-            --off-white-bg: #FDFBFF; /* Slightly off-white for main backgrounds if needed, or pure white */
+            --off-white-bg: #FDFBFF;
 
-            /* Text Colors (using purples or white) */
-            --text-dark-purple: #3B115E; /* For primary text on light backgrounds */
-            --text-medium-purple: #6C29A6; /* For secondary text or less emphasis */
-            --text-white: #FFFFFF; /* For text on dark purple backgrounds */
+            --text-dark-purple: #3B115E;
+            --text-medium-purple: #6C29A6;
+            --text-white: #FFFFFF;
 
-            /* Accents & Trims (using purples or white) */
-            --accent-highlight-purple: #A450E5; /* A brighter purple for accents */
-            --accent-trim-light: var(--primary-purple-light); /* Light trim */
-            --accent-trim-dark: var(--primary-purple-dark); /* Dark trim */
+            --accent-highlight-purple: #A450E5;
+            --accent-trim-light: var(--primary-purple-light);
+            --accent-trim-dark: var(--primary-purple-dark);
 
 
-            --border-radius: 10px; /* Slightly more minimalist radius */
-            --box-shadow-color: rgba(93, 31, 156, 0.08); /* Shadow based on primary purple */
-            --box-shadow-hover-color: rgba(93, 31, 156, 0.15);
+            --border-radius: 10px;
+            --box-shadow-color: rgba(59, 17, 94, 0.08);
+            --box-shadow-hover-color: rgba(59, 17, 94, 0.15);
             --gradient-purple: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
             --gradient-light-purple: linear-gradient(135deg, var(--primary-purple-light) 0%, var(--primary-purple-very-light) 100%);
         }
@@ -42,13 +39,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Manrope', sans-serif; /* Updated font */
+            font-family: 'Manrope', sans-serif;
         }
 
         body {
-            background-color: var(--pure-white); /* Main background white */
-            color: var(--text-dark-purple); /* Default text color */
-            line-height: 1.6; /* Adjusted for Manrope's readability */
+            background-color: var(--pure-white);
+            color: var(--text-dark-purple);
+            line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -62,39 +59,39 @@
 
         /* Typography */
         h1, h2, h3, h4 {
-            font-family: 'Manrope', sans-serif; /* Updated font */
-            font-weight: 600; /* Manrope looks good a bit bolder for headings */
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
             line-height: 1.3;
-            color: var(--text-dark-purple); /* Ensuring headings are dark purple */
+            color: var(--text-dark-purple);
         }
 
         p {
             font-weight: 400;
-            color: var(--text-medium-purple); /* Paragraphs slightly lighter purple */
+            color: var(--text-medium-purple);
         }
 
         section {
-            padding: 100px 0; /* Adjusted default section padding */
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
 
         /* Header */
         header {
-            padding: 20px 0; /* Adjusted padding */
-            background-color: rgba(255, 255, 255, 0.95); /* White with slight transparency */
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(8px);
-            box-shadow: 0 2px 15px rgba(93, 31, 156, 0.05); /* Subtle purple shadow */
+            box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05);
             transition: all 0.3s ease;
         }
 
         header.scrolled {
             padding: 15px 0;
-            box-shadow: 0 3px 20px rgba(93, 31, 156, 0.07);
+            box-shadow: 0 3px 20px rgba(59, 17, 94, 0.07);
         }
 
         .header-content {
@@ -104,7 +101,7 @@
         }
 
         .logo {
-            font-size: 26px; /* Slightly adjusted */
+            font-size: 26px;
             font-weight: 700;
             color: var(--primary-purple);
             text-decoration: none;
@@ -113,19 +110,19 @@
             align-items: center;
         }
 
-        .logo::before { /* Accent trim */
+        .logo::before {
             content: "";
             display: inline-block;
             width: 8px;
             height: 8px;
-            background: var(--accent-highlight-purple); /* Purple accent */
+            background: var(--accent-highlight-purple);
             border-radius: 50%;
             margin-right: 10px;
         }
 
         .nav-links {
             display: flex;
-            gap: 35px; /* Adjusted gap */
+            gap: 35px;
         }
 
         .nav-links a {
@@ -137,12 +134,12 @@
             font-size: 15px;
         }
 
-        .nav-links a::after { /* Underline accent */
+        .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px; /* Adjusted position */
+            bottom: -5px;
             left: 0;
             background-color: var(--primary-purple);
             transition: width 0.3s ease;
@@ -162,7 +159,7 @@
         }
 
         .btn {
-            padding: 10px 22px; /* Adjusted padding */
+            padding: 10px 22px;
             border-radius: var(--border-radius);
             font-weight: 500;
             cursor: pointer;
@@ -172,32 +169,32 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            letter-spacing: 0.2px; /* Subtle letter spacing */
-            font-size: 14px; /* Adjusted font size */
-            border: 2px solid transparent; /* Base border */
+            letter-spacing: 0.2px;
+            font-size: 14px;
+            border: 2px solid transparent;
         }
 
         .btn-outline {
-            border: 2px solid var(--primary-purple-light);
+            border: 2px solid var(--primary-purple);
             color: var(--primary-purple);
             background: transparent;
         }
 
         .btn-outline:hover {
             background-color: var(--primary-purple-very-light);
-            border-color: var(--primary-purple);
+            border-color: var(--primary-purple-dark);
             transform: translateY(-2px);
         }
 
         .btn-primary {
             background: var(--gradient-purple);
             color: var(--text-white);
-            border: none; /* Or 2px solid var(--primary-purple-dark) for definition */
+            border: none;
             box-shadow: 0 4px 12px var(--box-shadow-color);
         }
 
         .btn-primary:hover {
-            background: var(--primary-purple-dark); /* Solid color on hover or adjust gradient */
+            background: var(--primary-purple-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 16px var(--box-shadow-hover-color);
         }
@@ -219,7 +216,7 @@
             right: -300px;
             width: 280px;
             height: 100%;
-            background-color: var(--primary-purple-dark); /* Dark purple for mobile nav */
+            background-color: var(--primary-purple-dark);
             color: var(--text-white);
             padding: 80px 30px 30px;
             transition: right 0.3s ease;
@@ -235,18 +232,18 @@
 
         .mobile-nav .nav-links {
             flex-direction: column;
-            gap: 20px; /* Adjusted gap */
+            gap: 20px;
             margin-bottom: 30px;
         }
 
         .mobile-nav .nav-links a {
             color: var(--text-white);
-            font-size: 17px; /* Adjusted font size */
+            font-size: 17px;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
         .mobile-nav .nav-links a::after {
-            background-color: var(--accent-highlight-purple); /* Brighter purple accent */
+            background-color: var(--accent-highlight-purple);
         }
          .mobile-nav .nav-links a:hover {
             color: var(--primary-purple-light);
@@ -272,99 +269,16 @@
 
         /* Hero Section */
         .hero {
-            padding: 160px 0 100px; /* Adjusted padding */
+            padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
-            background: var(--primary-purple-very-light); /* Very light purple background */
+            background: linear-gradient(135deg, var(--primary-purple-very-light) 0%, var(--pure-white) 100%);
         }
 
-      
-.hero-highlight {
-  font-weight: 700; /* Makes the text bold */
-  color: var(--primary-purple); /* Uses the same purple variable as your logo */
-}
-
-/* Modify your existing .hero rule to look like this */
-.hero {
-    padding: 160px 0 100px;
-    position: relative;
-    overflow: hidden;
-    background: var(--primary-purple-very-light); /* Restored original light background */
-}
-/* === CSS FOR IDEA 2: INTERACTIVE GEOMETRIC SHAPES === */
-
-/* A faint, large rotated square in the background for texture */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: -150px;
-    right: -150px;
-    width: 600px;
-    height: 600px;
-    background: var(--primary-purple-light);
-    opacity: 0.3;
-    z-index: 0;
-    transform: rotate(45deg);
-}
-
-/* General styling for all moving shapes */
-.shape {
-    position: absolute;
-    z-index: 1;
-    /* This is the key for smooth movement! */
-    transition: transform 0.2s ease-out;
-}
-
-/* --- Shape Styles: Pick and Mix! --- */
-
-/* SHAPE 1: A Triangle */
-.shape-1 {
-    top: 20%;
-    left: 15%;
-    width: 0;
-    height: 0;
-    /* This border trick creates the triangle shape */
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-bottom: 70px solid var(--primary-purple-dark);
-    opacity: 0.35;
-}
-
-/* SHAPE 2: A Rotated Square (Diamond) */
-.shape-2 {
-    bottom: 20%;
-    right: 18%;
-    width: 100px;
-    height: 100px;
-    background: var(--accent-highlight-purple);
-    transform: rotate(45deg);
-    opacity: 0.25;
-}
-
-/* SHAPE 3: An Outlined Ring */
-.shape-3 {
-    top: 50%;
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    background: transparent;
-    border: 8px solid var(--primary-purple);
-    border-radius: 50%;
-    opacity: 0.4;
-}
-
-        .hero::before { /* Subtle gradient overlay, now purple based */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(245, 240, 250, 0.5) 0%, rgba(255, 255, 255, 0.7) 100%);
-            z-index: 1;
+        .hero-highlight {
+            font-weight: 700;
+            color: var(--primary-purple);
         }
-
-
 
         .hero .container {
             position: relative;
@@ -372,27 +286,27 @@
         }
 
         .hero-content {
-            max-width: 750px; /* Adjusted width */
+            max-width: 750px;
             margin: 0 auto;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 48px; /* Adjusted for Manrope */
+            font-size: 48px;
             margin-bottom: 20px;
             color: var(--text-dark-purple);
             position: relative;
             display: inline-block;
-            font-weight: 700; /* Bolder for hero title */
+            font-weight: 700;
         }
 
-        .hero h1::after { /* Underline for hero title */
+        .hero h1::after {
             content: '';
             position: absolute;
-            width: 80px; /* Adjusted width */
-            height: 3px; /* Adjusted height */
+            width: 80px;
+            height: 3px;
             background: var(--primary-purple);
-            bottom: -10px; /* Adjusted position */
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -406,33 +320,33 @@
         }
 
         .tagline {
-            font-size: 20px; /* Adjusted for Manrope */
+            font-size: 20px;
             margin-bottom: 25px;
-            font-weight: 400; /* Lighter weight for tagline */
+            font-weight: 400;
             color: var(--text-medium-purple);
         }
 
         .tagline strong {
             position: relative;
             z-index: 1;
-            font-weight: 600; /* Stronger emphasis */
+            font-weight: 600;
             color: var(--primary-purple);
         }
 
-        .tagline strong::after { /* Highlight for strong text, subtle purple */
+        .tagline strong::after {
             content: '';
             position: absolute;
             width: 100%;
-            height: 6px; /* Adjusted height */
-            background-color: rgba(164, 80, 229, 0.2); /* Accent highlight purple with alpha */
-            bottom: 1px; /* Adjusted position */
+            height: 6px;
+            background-color: rgba(164, 80, 229, 0.2);
+            bottom: 1px;
             left: 0;
             z-index: -1;
             border-radius: 2px;
         }
 
         .hero p {
-            font-size: 17px; /* Adjusted for Manrope */
+            font-size: 17px;
             margin-bottom: 35px;
             color: var(--text-medium-purple);
         }
@@ -475,12 +389,12 @@
 
         /* Features Section */
         .features {
-            background-color: var(--pure-white); /* White background */
+            background-color: var(--pure-white);
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px; /* Adjusted for Manrope */
+            font-size: 36px;
             margin-bottom: 15px;
             color: var(--text-dark-purple);
             font-weight: 700;
@@ -488,7 +402,7 @@
 
         .section-subtitle {
             text-align: center;
-            font-size: 17px; /* Adjusted for Manrope */
+            font-size: 17px;
             max-width: 650px;
             margin: 0 auto 50px;
             color: var(--text-medium-purple);
@@ -496,33 +410,31 @@
 
         .features-grid {
             display: grid;
-    /* This is the key change: creates 3 equal columns */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px;
-    /* Increase max-width to give the columns space */
-    max-width: 1100px; 
-    margin: 0 auto;
-}
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
         .feature-card {
             background-color: var(--pure-white);
             border-radius: var(--border-radius);
-            padding: 30px 25px; /* Adjusted padding */
+            padding: 30px 25px;
             text-align: center;
-            box-shadow: 0 8px 25px var(--box-shadow-color); /* Updated shadow */
+            box-shadow: 0 8px 25px var(--box-shadow-color);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             z-index: 1;
             overflow: hidden;
-            border: 1px solid var(--primary-purple-very-light); /* Subtle border */
+            border: 1px solid var(--primary-purple-very-light);
         }
 
-        .feature-card::before { /* Accent line, purple */
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px; /* Thinner line */
+            width: 3px;
             height: 0;
             background: var(--gradient-purple);
             transition: height 0.4s ease;
@@ -530,7 +442,7 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-8px); /* Adjusted hover effect */
+            transform: translateY(-8px);
             box-shadow: 0 12px 30px var(--box-shadow-hover-color);
         }
 
@@ -539,11 +451,11 @@
         }
 
         .feature-icon {
-            font-size: 36px; /* Adjusted icon size */
+            font-size: 36px;
             margin-bottom: 20px;
             color: var(--primary-purple);
-            background: var(--primary-purple-very-light); /* Light purple background for icon */
-            width: 75px; /* Adjusted size */
+            background: var(--primary-purple-very-light);
+            width: 75px;
             height: 75px;
             display: flex;
             align-items: center;
@@ -553,7 +465,7 @@
         }
 
         .feature-card h3 {
-            font-size: 20px; /* Adjusted for Manrope */
+            font-size: 20px;
             margin-bottom: 12px;
             color: var(--text-dark-purple);
             font-weight: 600;
@@ -567,13 +479,13 @@
 
         /* Research Methods Section */
         .research-methods {
-            background-color: var(--primary-purple-very-light); /* Light purple background */
+            background-color: var(--primary-purple-very-light);
         }
 
         .methods-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax */
-            gap: 25px; /* Adjusted gap */
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             position: relative;
             z-index: 2;
         }
@@ -585,13 +497,13 @@
             text-align: center;
             box-shadow: 0 8px 25px var(--box-shadow-color);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid transparent; /* Start with transparent border */
+            border: 1px solid transparent;
             cursor: pointer;
             position: relative;
             z-index: 1;
         }
 
-        .method-card::after { /* Background highlight on hover */
+        .method-card::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -607,7 +519,7 @@
         .method-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px var(--box-shadow-hover-color);
-            border-color: var(--primary-purple-light); /* Show border on hover */
+            border-color: var(--primary-purple-light);
         }
 
         .method-card:hover::after {
@@ -619,10 +531,10 @@
             position: relative;
         }
 
-        .method-icon img { /* Assuming icons are SVGs or PNGs that can be colored or are neutral */
+        .method-icon img {
             height: 60px;
             width: auto;
-            filter: drop-shadow(0 4px 8px rgba(93, 31, 156, 0.15)); /* Purple shadow */
+            filter: drop-shadow(0 4px 8px rgba(59, 17, 94, 0.15));
             transition: transform 0.3s ease;
         }
 
@@ -632,7 +544,7 @@
 
         .method-card h3 {
             margin-bottom: 10px;
-            font-size: 19px; /* Adjusted for Manrope */
+            font-size: 19px;
             color: var(--text-dark-purple);
             position: relative;
             display: inline-block;
@@ -641,12 +553,53 @@
 
         .method-card p {
             color: var(--text-medium-purple);
-            font-size: 14px; /* Slightly smaller */
+            font-size: 14px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--pure-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            border: 1px solid var(--primary-purple-very-light);
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark-purple);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card p {
+            font-size: 16px;
+            color: var(--text-medium-purple);
         }
 
         /* How It Works Section */
         .how-it-works {
-            background-color: var(--pure-white);
+            background-color: var(--primary-purple-very-light);
         }
 
         .steps-container {
@@ -657,52 +610,50 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 25px; /* Consistent gap */
+            gap: 25px;
             margin-top: 50px;
-            position: relative; /* For pseudo-element line if needed */
-            z-index: 2; /* Ensure steps are above the main line */
+            position: relative;
+            z-index: 2;
         }
 
         .step {
             flex: 1;
-            min-width: 250px; /* Adjusted min-width */
+            min-width: 250px;
             text-align: center;
             position: relative;
-            padding: 0 15px; /* Padding for content */
+            padding: 0 15px;
         }
 
-        /* Connector line styling for large screens using steps-container::before */
         .steps-container::before {
             content: '';
             position: absolute;
-            top: 35px; /* Vertically align with the middle of the numbers */
-            left: 15%; /* Start after the first half of the first element approx */
-            width: 70%; /* Span across the middle elements */
+            top: 35px;
+            left: 15%;
+            width: 70%;
             height: 2px;
-            background-color: var(--primary-purple-light); /* Light purple line */
-            z-index: 1; /* Behind step numbers */
-            display: none; /* Hidden by default, shown on larger screens */
+            background-color: var(--primary-purple-light);
+            z-index: 1;
+            display: none;
         }
 
         @media (min-width: 992px) {
             .steps-container::before {
                 display: block;
             }
-             .step::after { /* Hide individual step lines on large screens */
+             .step::after {
                 display: none !important;
             }
         }
 
-        /* Fallback or mobile line per step if steps-container line is not visible */
         .step::after {
             content: '';
             position: absolute;
             top: 35px;
-            left: calc(50% + 40px); /* Adjust based on number size and desired gap */
-            width: 30px; /* Shorter line for mobile */
+            left: calc(50% + 40px);
+            width: 30px;
             height: 2px;
             background: var(--primary-purple-light);
-            display: block; /* Show by default for mobile-first */
+            display: block;
         }
         .step:last-child::after {
             display: none;
@@ -713,21 +664,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px; /* Adjusted size */
+            width: 60px;
             height: 60px;
             background: var(--gradient-purple);
             color: var(--text-white);
             border-radius: 50%;
-            font-size: 22px; /* Adjusted for Manrope */
+            font-size: 22px;
             font-weight: 600;
             margin: 0 auto 25px;
-            box-shadow: 0 8px 18px rgba(93, 31, 156, 0.2); /* Purple shadow */
+            box-shadow: 0 8px 18px rgba(59, 17, 94, 0.2);
             position: relative;
-            z-index: 2; /* Above connecting lines */
+            z-index: 2;
         }
 
         .step h3 {
-            font-size: 20px; /* Adjusted for Manrope */
+            font-size: 20px;
             margin-bottom: 12px;
             color: var(--text-dark-purple);
             font-weight: 600;
@@ -740,12 +691,12 @@
 
         /* User Types Section */
         .user-types {
-            background-color: var(--primary-purple-very-light); /* Light purple background */
+            background-color: var(--pure-white);
         }
 
         .user-types-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             position: relative;
             z-index: 2;
@@ -754,11 +705,11 @@
         .user-type-card {
             background-color: var(--pure-white);
             border-radius: var(--border-radius);
-            padding: 35px 25px; /* Adjusted padding */
+            padding: 35px 25px;
             text-align: center;
             box-shadow: 0 8px 25px var(--box-shadow-color);
             transition: all 0.3s;
-            border: 1px solid var(--primary-purple-very-light); /* Subtle border */
+            border: 1px solid var(--primary-purple-very-light);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -766,15 +717,15 @@
             overflow: hidden;
         }
 
-        .user-type-card::before { /* Top accent line */
+        .user-type-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px; /* Thinner line */
+            height: 3px;
             background: var(--gradient-purple);
-            transform: scaleX(0); /* Start hidden */
+            transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
         }
@@ -786,11 +737,11 @@
         }
 
         .user-type-card:hover::before {
-            transform: scaleX(1); /* Reveal line on hover */
+            transform: scaleX(1);
         }
 
         .user-type-icon {
-            width: 80px; /* Adjusted size */
+            width: 80px;
             height: 80px;
             display: flex;
             align-items: center;
@@ -803,17 +754,17 @@
 
         .user-type-card:hover .user-type-icon {
             transform: scale(1.1);
-            background-color: var(--primary-purple-light); /* Slightly darker on hover */
-            box-shadow: 0 8px 20px rgba(93, 31, 156, 0.1);
+            background-color: var(--primary-purple-light);
+            box-shadow: 0 8px 20px rgba(59, 17, 94, 0.1);
         }
 
         .user-type-icon i {
-            font-size: 36px; /* Adjusted icon size */
+            font-size: 36px;
             color: var(--primary-purple);
         }
 
         .user-type-card h3 {
-            font-size: 22px; /* Adjusted for Manrope */
+            font-size: 22px;
             margin-bottom: 15px;
             color: var(--text-dark-purple);
             font-weight: 600;
@@ -833,54 +784,41 @@
 
         /* Testimonials Section */
         .testimonials {
-            background-color: var(--pure-white);
+            background-color: var(--primary-purple-very-light);
         }
-
-        .testimonials::before { /* Subtle background pattern, purple tinted */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E0D6EB' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5; /* Adjust opacity of the pattern */
-            z-index: 0;
-        }
-
 
         .testimonials .container {
             position: relative;
-            z-index: 1; /* Above pattern */
+            z-index: 1;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .testimonial-card {
             background-color: var(--pure-white);
             border-radius: var(--border-radius);
-            padding: 30px; /* Adjusted padding */
+            padding: 30px;
             box-shadow: 0 8px 25px var(--box-shadow-color);
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--primary-purple-very-light);
             position: relative;
-            display: flex; /* For better alignment of content */
+            display: flex;
             flex-direction: column;
         }
 
-        .testimonial-card::before { /* Quote mark, purple */
-            content: '“'; /* Using a more standard quote */
+        .testimonial-card::before {
+            content: '“';
             position: absolute;
-            top: 15px; /* Adjusted position */
+            top: 15px;
             left: 20px;
-            font-size: 80px; /* Adjusted size */
-            font-family: 'Manrope', sans-serif; /* Consistent font */
+            font-size: 80px;
+            font-family: 'Manrope', sans-serif;
             font-weight: 700;
-            color: rgba(122, 40, 203, 0.1); /* Primary purple with low opacity */
+            color: rgba(122, 40, 203, 0.1);
             line-height: 0.8;
             z-index: 0;
         }
@@ -892,29 +830,29 @@
         }
 
         .testimonial-text {
-            font-style: normal; /* Manrope doesn't always need italic for quotes */
+            font-style: normal;
             margin-bottom: 20px;
             position: relative;
-            z-index: 1; /* Above quote mark */
-            font-size: 15px; /* Adjusted for Manrope */
+            z-index: 1;
+            font-size: 15px;
             line-height: 1.7;
             color: var(--text-medium-purple);
-            flex-grow: 1; /* Allow text to take available space */
+            flex-grow: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            margin-top: auto; /* Push to bottom */
+            margin-top: auto;
         }
 
         .author-image {
-            width: 50px; /* Adjusted size */
+            width: 50px;
             height: 50px;
             border-radius: 50%;
             background-color: var(--primary-purple-very-light);
             margin-right: 12px;
-            border: 2px solid var(--primary-purple-light); /* Purple border */
+            border: 2px solid var(--primary-purple-light);
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -927,7 +865,7 @@
         }
 
         .author-info h4 {
-            font-size: 16px; /* Adjusted for Manrope */
+            font-size: 16px;
             margin-bottom: 3px;
             color: var(--text-dark-purple);
             line-height: 1.2;
@@ -936,17 +874,17 @@
 
         .author-info p {
             color: var(--text-medium-purple);
-            font-size: 13px; /* Adjusted for Manrope */
+            font-size: 13px;
             line-height: 1.2;
         }
 
         /* University Endorsements Section */
         .endorsements {
-            padding: 80px 0; /* Adjusted padding */
-            background-color: var(--primary-purple-very-light); /* Light purple */
+            padding: 80px 0;
+            background-color: var(--pure-white);
         }
 
-        .endorsements::before, .endorsements::after { /* Subtle top/bottom lines */
+        .endorsements::before, .endorsements::after {
             content: '';
             position: absolute;
             left: 0;
@@ -957,122 +895,90 @@
         .endorsements::before { top: 0; }
         .endorsements::after { bottom: 0; }
 
+        @keyframes scroll {
+            to {
+                transform: translateX(-100%);
+            }
+        }
 
-        /* === CSS for the new Logo Scroller === */
+        .logo-scroller {
+            max-width: 100%;
+            overflow: hidden;
+            -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+            mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+        }
 
-/* Add this new keyframes animation to the end of your CSS block */
-@keyframes scroll {
-    to {
-        transform: translateX(-100%);
-    }
-}
+        .scroller-inner {
+            display: flex;
+            flex-wrap: nowrap;
+            width: max-content;
+            gap: 3rem;
+            animation: scroll 40s linear infinite;
+        }
 
-.logo-scroller {
-    max-width: 100%;
-    overflow: hidden;
-    /* This mask creates the fade-out effect on the edges */
-    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-}
+        @media (prefers-reduced-motion) {
+            .scroller-inner {
+                animation-play-state: paused;
+            }
+        }
 
-.scroller-inner {
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-    gap: 3rem; /* Controls the space between logos */
+        .university-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-    /* The animation magic! */
-    animation: scroll 40s linear infinite;
-}
+        .university-logo img {
+            filter: grayscale(100%) opacity(0.6);
+            transition: filter 0.3s ease, opacity 0.3s ease;
+            max-width: 130px;
+            height: 50px;
+            object-fit: contain;
+        }
 
-/* This is a good practice for accessibility */
-@media (prefers-reduced-motion) {
-    .scroller-inner {
-        animation-play-state: paused;
-    }
-}
+        .university-logo:hover img {
+            filter: grayscale(0%) opacity(1);
+        }
 
-.university-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
+        .university-logo p {
+            font-weight: 500;
+            margin-top: 12px;
+            color: var(--text-medium-purple);
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
 
-.university-logo img {
-    filter: grayscale(100%) opacity(0.6);
-    transition: filter 0.3s ease, opacity 0.3s ease;
-    max-width: 130px;
-    height: 50px;
-    object-fit: contain;
-}
+        .university-logo:hover p {
+            color: var(--primary-purple);
+        }
 
-.university-logo:hover img {
-    filter: grayscale(0%) opacity(1);
-}
-
-.university-logo p {
-    font-weight: 500;
-    margin-top: 12px;
-    color: var(--text-medium-purple);
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.university-logo:hover p {
-    color: var(--primary-purple);
-}
-
-.scroller-inner:hover {
-    animation-play-state: paused; /* Pauses the scroll on hover */
-}
+        .scroller-inner:hover {
+            animation-play-state: paused;
+        }
 
         /* CTA Section */
         .cta {
             text-align: center;
-            background-color: var(--pure-white); /* White background */
-            padding: 80px 0;
-        }
-
-        .cta::before { /* Purple gradient overlay */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(122, 40, 203, 0.05) 0%, rgba(245, 240, 250, 0.5) 100%);
-            z-index: 0;
-        }
-
-        .cta::after { /* Decorative circle, purple */
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 300px;
-            height: 300px;
-            background: var(--primary-purple);
-            border-radius: 50%;
-            opacity: 0.04; /* Very subtle */
-             z-index: 0;
+            background-color: var(--primary-purple-very-light);
+            padding: 80px 30px;
         }
 
         .cta .container {
             position: relative;
-            z-index: 1; /* Above decorations */
+            z-index: 1;
         }
 
         .cta h2 {
-            font-size: 34px; /* Adjusted for Manrope */
+            font-size: 34px;
             margin-bottom: 20px;
             color: var(--text-dark-purple);
             font-weight: 700;
         }
 
         .cta p {
-            font-size: 17px; /* Adjusted for Manrope */
+            font-size: 17px;
             margin-bottom: 35px;
             max-width: 650px;
             margin-left: auto;
@@ -1082,35 +988,35 @@
 
         /* Footer */
         footer {
-            background-color: var(--text-dark-purple); /* Dark purple footer */
-            color: var(--primary-purple-very-light); /* Light text on dark background */
+            background-color: var(--primary-purple-light);
+            color: var(--text-dark-purple);
             padding: 70px 0 25px;
             position: relative;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted minmax */
-            gap: 40px; /* Adjusted gap */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
             margin-bottom: 50px;
         }
 
         .footer-column h3 {
-            font-size: 18px; /* Adjusted for Manrope */
+            font-size: 18px;
             margin-bottom: 20px;
-            color: var(--pure-white); /* White headings */
+            color: var(--text-dark-purple);
             position: relative;
             display: inline-block;
             font-weight: 600;
         }
 
-        .footer-column h3::after { /* Accent underline, light purple */
+        .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 25px; /* Shorter */
+            width: 25px;
             height: 2px;
-            background: var(--accent-highlight-purple); /* Brighter purple */
-            bottom: -8px; /* Adjusted position */
+            background: var(--primary-purple);
+            bottom: -8px;
             left: 0;
         }
 
@@ -1121,51 +1027,51 @@
         }
 
         .footer-column ul li {
-            margin-bottom: 10px; /* Adjusted spacing */
+            margin-bottom: 10px;
             transition: transform 0.2s ease;
         }
 
         .footer-column ul li:hover {
-            transform: translateX(4px); /* Subtle hover effect */
+            transform: translateX(4px);
         }
 
         .footer-column ul li a {
             text-decoration: none;
-            color: var(--primary-purple-light); /* Light purple links */
-            font-size: 14px; /* Adjusted for Manrope */
+            color: var(--text-medium-purple);
+            font-size: 14px;
             transition: color 0.3s ease;
             display: flex;
             align-items: center;
         }
 
         .footer-column ul li a:hover {
-            color: var(--pure-white); /* White on hover */
+            color: var(--text-dark-purple);
         }
 
-        .footer-column ul li a i { /* Icons in footer links, brighter purple */
+        .footer-column ul li a i {
             margin-right: 8px;
-            color: var(--accent-highlight-purple);
+            color: var(--primary-purple);
             font-size: 15px;
         }
 
         .footer-info .logo {
-            color: var(--pure-white); /* White logo in footer */
+            color: var(--text-dark-purple);
             margin-bottom: 15px;
         }
 
         .footer-info .logo::before {
-            background: var(--accent-highlight-purple); /* Brighter purple dot */
+            background: var(--primary-purple);
         }
 
         .footer-info p {
-            font-size: 14px; /* Adjusted for Manrope */
-            color: var(--primary-purple-light); /* Light purple text */
+            font-size: 14px;
+            color: var(--text-medium-purple);
             margin-bottom: 20px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px; /* Adjusted gap */
+            gap: 12px;
             margin-top: 15px;
         }
 
@@ -1173,27 +1079,27 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px; /* Adjusted size */
+            width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-            color: var(--pure-white);
-            font-size: 16px; /* Adjusted icon size */
+            background-color: rgba(59, 17, 94, 0.1);
+            color: var(--text-dark-purple);
+            font-size: 16px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .social-links a:hover {
-            background-color: var(--accent-highlight-purple); /* Brighter purple */
+            background-color: var(--primary-purple);
             color: var(--pure-white);
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 40px; /* Adjusted spacing */
+            margin-top: 40px;
             padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
-            font-size: 13px; /* Adjusted for Manrope */
-            color: var(--primary-purple-light); /* Light purple text */
+            border-top: 1px solid rgba(59, 17, 94, 0.1);
+            font-size: 13px;
+            color: var(--text-medium-purple);
         }
 
         /* Responsive Adjustments */
@@ -1204,11 +1110,8 @@
             .mobile-menu-btn {
                 display: block;
             }
-            .header-content {
-                /* Ensure logo is on left, button on right if screen is very small before mobile nav kicks in */
-            }
             .hero h1 {
-                font-size: 38px; /* Responsive hero title */
+                font-size: 38px;
             }
             .tagline {
                 font-size: 18px;
@@ -1232,7 +1135,11 @@
             .user-types-grid,
             .testimonials-grid,
             .footer-content {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Adjust minmax for smaller screens */
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
             }
 
             .testimonial-card::before {
@@ -1265,29 +1172,27 @@
                 font-size: 16px;
             }
             .footer-content {
-                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ensure footer columns stack well */
+                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
              .step {
-                min-width: 100%; /* Stack steps on smaller screens */
-                margin-bottom: 30px; /* Add space between stacked steps */
+                min-width: 100%;
+                margin-bottom: 30px;
             }
             .step:last-child {
                 margin-bottom: 0;
             }
-            .step::after { /* Ensure mobile lines connect downwards or are not needed if stacked */
-                /* display: none; Depending on stacking, you might remove these lines */
-                 /* If stacking, you might want a vertical line or just remove horizontal ones */
+            .step::after {
                 left: 50%;
-                bottom: -15px; /* Position below the element */
+                bottom: -15px;
                 top: auto;
                 width: 2px;
-                height: 15px; /* Short vertical connector */
+                height: 15px;
                 transform: translateX(-50%);
             }
              .step:last-child::after {
                 display: none;
             }
-            .steps-container::before { /* Hide main connector line on small screens */
+            .steps-container::before {
                 display: none;
             }
         }
@@ -1313,7 +1218,7 @@
                 margin-bottom: 0;
             }
             .cta-buttons {
-                gap: 10px; /* Reduce gap for stacked buttons */
+                gap: 10px;
             }
             .section-title {
                 font-size: 26px;
@@ -1322,24 +1227,25 @@
                 font-size: 15px;
             }
              .features-grid {
-                 max-width: 90%; /* Allow single column to use more width */
+                 max-width: 90%;
+                 grid-template-columns: 1fr;
              }
             .footer-content {
-                grid-template-columns: 1fr; /* Stack all footer columns */
-                text-align: center; /* Center text in stacked footer columns */
+                grid-template-columns: 1fr;
+                text-align: center;
             }
             .footer-column h3::after {
                 left: 50%;
-                transform: translateX(-50%); /* Center underline */
+                transform: translateX(-50%);
             }
             .footer-column ul li a {
-                justify-content: center; /* Center footer links */
+                justify-content: center;
             }
             .footer-info .logo {
-                 justify-content: center; /* Center logo in footer */
+                 justify-content: center;
             }
             .social-links {
-                justify-content: center; /* Center social links */
+                justify-content: center;
             }
             .waitlist-form {
                 flex-direction: column;
@@ -1356,6 +1262,7 @@
                 <nav class="nav-links">
                     <a href="#features">Features</a>
                     <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
                     <a href="#user-types">For Who?</a>
                     <a href="#testimonials">Testimonials</a>
                 </nav>
@@ -1372,6 +1279,7 @@
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
             <a href="#user-types">For Who?</a>
             <a href="#testimonials">Testimonials</a>
         </div>
@@ -1382,9 +1290,6 @@
 
     <main>
         <section class="hero">
-                <div class="shape shape-1" data-speed="-2"></div>
-                <div class="shape shape-2" data-speed="1"></div>
-                <div class="shape shape-3" data-speed="3"></div>
             <div class="container">
                 <div class="hero-content animate__animated animate__fadeInUp">
                     <h1 class="animate__animated animate__fadeInDown animate__delay-0.5s">Innovate. <em><span class="hero-highlight">Validate.</span></em> Create</h1>
@@ -1393,8 +1298,8 @@
                         Qurate empowers aspiring entrepreneurs, start-ups, and SMEs to test their concepts with real-world feedback from ideation through to execution; streamlined for ease, speed, and affordability.
                     </p>
                     <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-1.2s">
-    <a href="#cta" class="btn btn-primary">Validate Your Idea</a>
-    <a href="#respondent-cta" class="btn btn-outline">Sign up as a Respondent</a>
+                        <a href="#cta" class="btn btn-primary">Validate Your Idea</a>
+                        <a href="#respondent-cta" class="btn btn-outline">Sign up as a Respondent</a>
                    </div>
                 </div>
             </div>
@@ -1408,45 +1313,19 @@
                 </p>
                 <div class="features-grid">
                     <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.4s">
-                        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div> <h3>Rapid Idea Testing</h3>
-                        <p>Move from concept to feedback in days, not months. Our platform streamlines the setup and execution of validation studies.</p>
+                        <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
+                        <h3>Centralised Validation Platform</h3>
+                        <p>Find all the tools and people you need to understand if there is merit to your business idea, all in one place.</p>
                     </div>
                      <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.5s">
-                        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
-                        <h3>Targeted Audience Panels</h3>
-                        <p>Access diverse or niche audience segments to ensure your feedback is relevant and reflects your true market potential.</p>
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Behavioural Science-Backed Insights</h3>
+                        <p>Leverage tools designed to ask bias-free questions and ensure high-quality responses for reliable feedback.</p>
                     </div>
                     <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.6s">
-                        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-                        <h3>Clear, Actionable Reports</h3>
-                        <p>Receive easy-to-understand reports highlighting key findings, potential risks, and opportunities for your business idea.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="research-methods" class="research-methods">
-            <div class="container">
-                <h2 class="section-title animate__animated animate__fadeInUp">Leverage Proven Research Methods</h2>
-                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
-                    Qurate employs a variety of established research techniques, adapted for quick and effective idea validation.
-                </p>
-                <div class="methods-grid">
-                    <div class="method-card animate__animated animate__zoomIn">
-                        <div class="method-icon"><img src="https://img.icons8.com/fluency/96/survey.png" alt="Survey Icon"></div> <h3>Concept Surveys</h3>
-                        <p>Gauge initial interest, pricing sensitivity, and feature preferences with targeted online surveys.</p>
-                    </div>
-                    <div class="method-card animate__animated animate__zoomIn animate__delay-0.2s">
-                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=ueTUwqU6CWjN&format=png&color=7A28CB" alt="Interview Icon"></div> <h3>Lean Interviews</h3>
-                        <p>Conduct structured interviews to uncover deep insights into customer problems and needs.</p>
-                    </div>
-                    <div class="method-card animate__animated animate__zoomIn animate__delay-0.4s">
-                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=68406&format=png&color=7A28CB" alt="Landing Page Test Icon"></div> <h3>Landing Page Tests</h3>
-                        <p>Measure demand by driving traffic to a test landing page and analyzing conversion signals.</p>
-                    </div>
-                     <div class="method-card animate__animated animate__zoomIn animate__delay-0.6s">
-                        <div class="method-icon"><img src="https://img.icons8.com/?size=100&id=GoP6RODnGfgO&format=png&color=7A28CB" alt="A/B Test Icon"></div> <h3>Comparative Analysis</h3>
-                        <p>Understand how your idea stacks up against existing solutions or alternative concepts.</p>
+                        <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                        <h3>Affordable & Transparent Pricing</h3>
+                        <p>Validate your idea without the high costs of traditional market research, with a clear and simple pricing model.</p>
                     </div>
                 </div>
             </div>
@@ -1479,30 +1358,51 @@
                 </div>
             </div>
         </section>
-
-<section id="user-types" class="user-types">
-    <div class="container">
-        <h2 class="section-title animate__animated animate__fadeInUp">The Future of Innovation Needs Both Voices. Add Yours</h2>
-        <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
-            Qurate connects creators who need feedback with individuals ready to share their insights. Choose your path below.
-        </p>
-        <div class="user-types-grid">
-            <div class="user-type-card animate__animated animate__fadeInUp">
-                <div class="user-type-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3>For Innovators & Entrepreneurs</h3>
-                <p>Have a business idea? Minimise risk and make data-driven decisions by testing your concept with a real audience before you invest your time and money.</p>
-                <a href="#cta" class="btn btn-primary">Join the Innovator Waitlist</a>
+        
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Transparent Pricing</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    A simple and clear pricing model to get you started.
+                </p>
+                <div class="pricing-grid">
+                    <div class="pricing-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <h3>Respondent Pool</h3>
+                        <div class="price">£50</div>
+                        <p>This is the minimum pool limit which is split equally amongst the final number of respondents.</p>
+                    </div>
+                    <div class="pricing-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <h3>Service Charge</h3>
+                        <div class="price">£25</div>
+                        <p>A one-time service charge for using the Qurate platform and tools.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.2s">
-                <div class="user-type-icon"><i class="fas fa-user-check"></i></div>
-                <h3>For Respondents</h3>
-                <p>Influence the next wave of products and services. Share your valuable opinions on new business ideas and get rewarded (in cold hard cash!) for your time and feedback.</p>
-                <a href="#respondent-cta" class="btn btn-outline">Join the Respondent Panel</a>
+        <section id="user-types" class="user-types">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">The Future of Innovation Needs Both Voices. Add Yours</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Qurate connects creators who need feedback with individuals ready to share their insights. Choose your path below.
+                </p>
+                <div class="user-types-grid">
+                    <div class="user-type-card animate__animated animate__fadeInUp">
+                        <div class="user-type-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>For Innovators & Entrepreneurs</h3>
+                        <p>Have a business idea? Minimise risk and make data-driven decisions by testing your concept with a real audience before you invest your time and money.</p>
+                        <a href="#cta" class="btn btn-primary">Join the Innovator Waitlist</a>
+                    </div>
+
+                    <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <div class="user-type-icon"><i class="fas fa-user-check"></i></div>
+                        <h3>For Respondents</h3>
+                        <p>Influence the next wave of products and services. Share your valuable opinions on new business ideas and get rewarded (in cold hard cash!) for your time and feedback.</p>
+                        <a href="#respondent-cta" class="btn btn-outline">Join the Respondent Panel</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section id="testimonials" class="testimonials">
             <div class="container">
@@ -1542,102 +1442,102 @@
             </div>
         </section>
 
-        <section id="respondent-cta" class="cta" style="background-color: var(--primary-purple-very-light);">
-    <div class="container">
-        <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
-        <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
-            Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
-        </p>
-        <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
-            <input type="email" placeholder="Enter your email to become a respondent" required>
-            <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
-        </form>
-    </div>
-</section>
+        <section id="respondent-cta" class="cta">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
+                <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
+                </p>
+                <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="email" placeholder="Enter your email to become a respondent" required>
+                    <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
+                </form>
+            </div>
+        </section>
 
-<section class="endorsements">
-    <div class="container">
-        <h2 class="section-title animate__animated animate__fadeInUp">Collaborating with Academic & Startup Ecosystems</h2>
-        <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
-            We're proud to support and be supported by institutions fostering innovation. <br>(Logos are for demonstration purposes)
-        </p>
-    </div>
-
-    <div class="logo-scroller">
-        <div class="scroller-inner">
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
-                <p>University of Oxford</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
-                <p>University of Cambridge</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
-                <p>King's College London</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
-                <p>University of Warwick</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
-                <p>UCL</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
-                <p>Imperial College London</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
-                <p>London School of Economics</p>
+        <section class="endorsements">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Collaborating with Academic & Startup Ecosystems</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    We're proud to support and be supported by institutions fostering innovation. <br>(Logos are for demonstration purposes)
+                </p>
             </div>
 
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
-                <p>University of Oxford</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
-                <p>University of Cambridge</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
-                <p>King's College London</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
-                <p>University of Warwick</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
-                <p>UCL</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
-                <p>Imperial College London</p>
-            </div>
-            <div class="university-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
-                <p>London School of Economics</p>
-            </div>
-        </div>
-    </div>
-</section>
+            <div class="logo-scroller">
+                <div class="scroller-inner">
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                        <p>University of Oxford</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                        <p>University of Cambridge</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                        <p>King's College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                        <p>University of Warwick</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                        <p>UCL</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                        <p>Imperial College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                        <p>London School of Economics</p>
+                    </div>
 
-    <section id="cta" class="cta">
-    <div class="container">
-        <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters</h2>
-        <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
-            Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
-        </p>
-        <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
-            <input type="email" placeholder="Enter your email to join the innovator waitlist" required>
-            <button type="submit" class="btn btn-primary">Get Early Access</button>
-        </form>
-    </div>
-</section>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                        <p>University of Oxford</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                        <p>University of Cambridge</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                        <p>King's College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                        <p>University of Warwick</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                        <p>UCL</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                        <p>Imperial College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                        <p>London School of Economics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters.</h2>
+                <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
+                </p>
+                <form class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="email" placeholder="Enter your email to join the innovator waitlist" required>
+                    <button type="submit" class="btn btn-primary">Get Early Access</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -1729,57 +1629,23 @@
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Simple Intersection Observer for animations (optional, but adds nice effect)
+        // Simple Intersection Observer for animations
         const animatedElements = document.querySelectorAll('.animate__animated');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add animation classes from Animate.css
-                    // The classes are already in the HTML, this just ensures they trigger on scroll
-                    entry.target.style.visibility = 'visible'; // Make visible before animation
+                    entry.target.style.visibility = 'visible';
                 } else {
-                    // Optionally remove classes to re-trigger animation on scroll up
-                    // entry.target.classList.remove('animate__fadeInUp', 'animate__fadeInDown', ...);
-                    // entry.target.style.visibility = 'hidden'; // Hide if you want to re-trigger
+                    entry.target.style.visibility = 'hidden';
                 }
             });
         }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
+            threshold: 0.1
         });
 
         animatedElements.forEach(el => {
-            el.style.visibility = 'hidden'; // Initially hide elements to be animated
+            el.style.visibility = 'hidden';
             observer.observe(el);
-        });
-
-        // === JAVASCRIPT FOR INTERACTIVE PARALLAX SHAPES ===
-        // This code should be INSIDE the script tags
-
-        document.addEventListener('mousemove', (e) => {
-            const hero = document.querySelector('.hero');
-            if (!hero) return;
-
-            const x = (window.innerWidth / 2 - e.pageX);
-            const y = (window.innerHeight / 2 - e.pageY);
-
-            const shapes = hero.querySelectorAll('.shape[data-speed]');
-            
-            shapes.forEach(shape => {
-                const speed = shape.getAttribute('data-speed');
-                
-                const moveX = x * speed / 100;
-                const moveY = y * speed / 100;
-
-                // --- IMPROVEMENT ADDED HERE ---
-                // This checks if the shape is the diamond and makes sure it STAYS rotated
-                if (shape.classList.contains('shape-2')) {
-                    // Apply BOTH the rotation and the new translation
-                    shape.style.transform = `rotate(45deg) translate(${moveX}px, ${moveY}px)`;
-                } else {
-                    // Just apply the translation for the other shapes
-                    shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                }
-            });
         });
     </script>
 
