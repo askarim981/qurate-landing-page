@@ -275,51 +275,69 @@
             background: linear-gradient(135deg, var(--primary-purple-very-light) 0%, var(--pure-white) 100%);
         }
 
-        .hero-highlight {
-  color: var(--primary-purple); /* Keeps the text color the same */
-  position: relative;
-  z-index: 1;
-}
+        /* --- ✨ NEW - Keyframes for the animated gradient text --- */
+        @keyframes animated-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* --- ✨ NEW - Keyframes for the background blob animation --- */
+        @keyframes move-blob {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+            to {
+                transform: translate(40px, -60px) scale(1.2);
+            }
+        }
 
-.hero-highlight::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 12px; /* Adjust the thickness of the highlight */
-  background-color: rgba(164, 80, 229, 0.25); /* A semi-transparent accent color */
-  bottom: 5px; /* Adjust the vertical position */
-  left: 0;
-  z-index: -1;
-  transform: skew(-10deg); /* Adds a little flair */
-  border-radius: 3px;
-}
+        /* --- ✨ NEW - Background blob styling --- */
+        .background-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .blob1 {
+            width: 450px;
+            height: 450px;
+            top: -150px;
+            left: -100px;
+            background-color: var(--primary-purple-light);
+            animation: move-blob 18s infinite alternate;
+        }
+        .blob2 {
+            width: 350px;
+            height: 350px;
+            bottom: -120px;
+            right: -150px;
+            background-color: var(--accent-highlight-purple);
+            animation: move-blob 22s infinite alternate-reverse;
+        }
+
 
         .hero-content {
             max-width: 750px;
             margin: 0 auto;
             text-align: center;
+            position: relative; /* Ensure content is above blobs */
+            z-index: 1;
         }
-
+        
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: var(--text-dark-purple);
-            position: relative;
-            display: inline-block;
             font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-highlight-purple), var(--primary-purple-dark), var(--primary-purple));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animated-gradient 10s ease-in-out infinite;
         }
-
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--primary-purple);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
+        
         .strapline {
             font-size: 22px;
             font-weight: 600;
@@ -388,12 +406,6 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-        }
-
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-25px) rotate(10deg); }
         }
 
         /* Features Section */
@@ -1259,6 +1271,9 @@
             .waitlist-form {
                 flex-direction: column;
             }
+            .blob1, .blob2 {
+                display: none; /* Optionally hide blobs on small screens */
+            }
         }
 
     </style>
@@ -1299,9 +1314,12 @@
 
     <main>
         <section class="hero">
+            <div class="background-blob blob1"></div>
+            <div class="background-blob blob2"></div>
+            
             <div class="container">
                 <div class="hero-content animate__animated animate__fadeInUp">
-                    <h1 class="animate__animated animate__fadeInDown animate__delay-0.5s">Innovate. <em><span class="hero-highlight">Validate.</span></em> Create</h1>
+                    <h1 class="animate__animated animate__fadeInDown animate__delay-0.5s">Innovate. <em>Validate.</em> Create</h1>
                     <p class="tagline animate__animated animate__fadeInDown animate__delay-0.8s">Stop guessing. Start <strong>Qurating</strong>. Build businesses people actually want.</p>
                     <p class="animate__animated animate__fadeInUp animate__delay-1s">
                         Qurate empowers aspiring entrepreneurs, start-ups, and SMEs to test their concepts with real-world feedback from ideation through to execution; streamlined for ease, speed, and affordability.
