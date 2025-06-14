@@ -731,7 +731,7 @@
 
         /* User Types Section */
         .user-types {
-            background-color: var(--pure-white);
+            background-color: var(--primary-purple-very-light);
         }
 
         .user-types-grid {
@@ -824,7 +824,7 @@
 
         /* Testimonials Section */
         .testimonials {
-            background-color: var(--primary-purple-very-light);
+            background-color: var(--pure-white);
         }
 
         .testimonials .container {
@@ -1028,8 +1028,8 @@
 
         /* Footer */
         footer {
-            background-color: var(--primary-purple-light);
-            color: var(--text-dark-purple);
+            background-color: var(--primary-purple-dark);
+            color: var(--text-white);
             padding: 70px 0 25px;
             position: relative;
         }
@@ -1044,7 +1044,7 @@
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 20px;
-            color: var(--text-dark-purple);
+            color: var(--text-white);
             position: relative;
             display: inline-block;
             font-weight: 600;
@@ -1055,7 +1055,7 @@
             position: absolute;
             width: 25px;
             height: 2px;
-            background: var(--primary-purple);
+            background: var(--accent-highlight-purple);
             bottom: -8px;
             left: 0;
         }
@@ -1077,7 +1077,7 @@
 
         .footer-column ul li a {
             text-decoration: none;
-            color: var(--text-medium-purple);
+            color: var(--primary-purple-light);
             font-size: 14px;
             transition: color 0.3s ease;
             display: flex;
@@ -1085,27 +1085,27 @@
         }
 
         .footer-column ul li a:hover {
-            color: var(--text-dark-purple);
+            color: var(--text-white);
         }
 
         .footer-column ul li a i {
             margin-right: 8px;
-            color: var(--primary-purple);
+            color: var(--accent-highlight-purple);
             font-size: 15px;
         }
 
         .footer-info .logo {
-            color: var(--text-dark-purple);
+            color: var(--text-white);
             margin-bottom: 15px;
         }
 
         .footer-info .logo::before {
-            background: var(--primary-purple);
+            background: var(--accent-highlight-purple);
         }
 
         .footer-info p {
             font-size: 14px;
-            color: var(--text-medium-purple);
+            color: var(--primary-purple-light);
             margin-bottom: 20px;
         }
 
@@ -1122,24 +1122,24 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: rgba(59, 17, 94, 0.1);
-            color: var(--text-dark-purple);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
             font-size: 16px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .social-links a:hover {
-            background-color: var(--primary-purple);
-            color: var(--pure-white);
+            background-color: var(--accent-highlight-purple);
+            color: var(--text-white);
         }
 
         .footer-bottom {
             text-align: center;
             margin-top: 40px;
             padding-top: 25px;
-            border-top: 1px solid rgba(59, 17, 94, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 13px;
-            color: var(--text-medium-purple);
+            color: var(--primary-purple-light);
         }
 
         /* Responsive Adjustments */
@@ -1488,21 +1488,21 @@
             </div>
         </section>
 
-        <section id="respondent-cta" class="cta">
+        <section id="cta" class="cta">
             <div class="container">
-                <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
+                <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters.</h2>
                 <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
-                    Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
+                    Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
                 </p>
-                <form id="respondent-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
-                    <input type="hidden" name="type" value="respondent">
-                    <input type="email" name="email" placeholder="Enter your email to become a respondent" required>
-                    <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
+                <form id="innovator-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="entrepreneur">
+                    <input type="email" name="email" placeholder="Enter your email to join the innovator waitlist" required>
+                    <button type="submit" class="btn btn-primary">Get Early Access</button>
                 </form>
-                <div id="respondent-form-message" class="form-message"></div>
+                <div id="innovator-form-message" class="form-message"></div>
             </div>
         </section>
-
+        
         <section class="endorsements">
             <div class="container">
                 <h2 class="section-title animate__animated animate__fadeInUp">Collaborating with Academic & Startup Ecosystems</h2>
@@ -1574,18 +1574,18 @@
             </div>
         </section>
 
-        <section id="cta" class="cta">
+        <section id="respondent-cta" class="cta" style="background-color: var(--primary-purple-very-light);">
             <div class="container">
-                <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters.</h2>
+                <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
                 <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
-                    Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
+                    Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
                 </p>
-                <form id="innovator-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
-                    <input type="hidden" name="type" value="entrepreneur">
-                    <input type="email" name="email" placeholder="Enter your email to join the innovator waitlist" required>
-                    <button type="submit" class="btn btn-primary">Get Early Access</button>
+                <form id="respondent-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="respondent">
+                    <input type="email" name="email" placeholder="Enter your email to become a respondent" required>
+                    <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
                 </form>
-                <div id="innovator-form-message" class="form-message"></div>
+                <div id="respondent-form-message" class="form-message"></div>
             </div>
         </section>
     </main>
