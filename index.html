@@ -198,6 +198,11 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 16px var(--box-shadow-hover-color);
         }
+        
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
 
         /* Mobile Menu */
         .mobile-menu-btn {
@@ -384,6 +389,7 @@
             gap: 15px;
             max-width: 500px;
             margin: 0 auto;
+            position: relative;
         }
 
         .waitlist-form input[type="email"] {
@@ -407,6 +413,19 @@
             gap: 20px;
             flex-wrap: wrap;
         }
+        
+        .form-message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        .form-message.success {
+            color: #28a745;
+        }
+        .form-message.error {
+            color: #dc3545;
+        }
+
 
         /* Features Section */
         .features {
@@ -1475,9 +1494,12 @@
                 <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
                     Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
                 </p>
-                <div class="animate__animated animate__fadeInUp animate__delay-0.4s">
-                    <iframe data-tally-src="https://tally.so/embed/w5gJbE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="497" frameborder="0" marginheight="0" marginwidth="0" title="Qurate Landing Page Sign Up"></iframe>
-                </div>
+                <form id="respondent-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="respondent">
+                    <input type="email" name="email" placeholder="Enter your email to become a respondent" required>
+                    <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
+                </form>
+                <div id="respondent-form-message" class="form-message"></div>
             </div>
         </section>
 
@@ -1558,9 +1580,12 @@
                 <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
                     Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
                 </p>
-                <div class="animate__animated animate__fadeInUp animate__delay-0.4s">
-                   <iframe data-tally-src="https://tally.so/embed/w5gJbE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="497" frameborder="0" marginheight="0" marginwidth="0" title="Qurate Landing Page Sign Up"></iframe>
-                </div>
+                <form id="innovator-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="entrepreneur">
+                    <input type="email" name="email" placeholder="Enter your email to join the innovator waitlist" required>
+                    <button type="submit" class="btn btn-primary">Get Early Access</button>
+                </form>
+                <div id="innovator-form-message" class="form-message"></div>
             </div>
         </section>
     </main>
@@ -1673,7 +1698,51 @@
             observer.observe(el);
         });
     </script>
-    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyk_G51gpKt35KhyF0xGi1t1t6geKFv1EZjsKfS1fZfs8U876AG6a7ZT7bVxjFFjJhVZw/exec';
+      const innovatorForm = document.getElementById('innovator-form');
+      const respondentForm = document.getElementById('respondent-form');
+
+      const handleFormSubmit = (form, messageElementId) => {
+        const messageElement = document.getElementById(messageElementId);
+        
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.innerHTML;
+
+          submitButton.disabled = true;
+          submitButton.innerHTML = 'Submitting...';
+          messageElement.textContent = '';
+          messageElement.className = 'form-message';
+
+          fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => response.json())
+            .then(data => {
+              if (data.result === 'success') {
+                messageElement.textContent = 'Thank you for signing up!';
+                messageElement.classList.add('success');
+                form.reset();
+              } else {
+                throw new Error(data.message || 'An unknown error occurred.');
+              }
+            })
+            .catch(error => {
+              messageElement.textContent = 'Oops! Something went wrong. Please try again.';
+              messageElement.classList.add('error');
+              console.error('Error!', error.message);
+            })
+            .finally(() => {
+              submitButton.disabled = false;
+              submitButton.innerHTML = originalButtonText;
+            });
+        });
+      };
+
+      handleFormSubmit(innovatorForm, 'innovator-form-message');
+      handleFormSubmit(respondentForm, 'respondent-form-message');
+    </script>
 
 </body>
 </html>
