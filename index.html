@@ -1704,7 +1704,8 @@
       const innovatorForm = document.getElementById('innovator-form');
       const respondentForm = document.getElementById('respondent-form');
 
-      const handleFormSubmit = (form, messageElementId) => {
+      // CHANGED: Added a 'successMessage' parameter to the function
+      const handleFormSubmit = (form, messageElementId, successMessage) => {
         const messageElement = document.getElementById(messageElementId);
         
         form.addEventListener('submit', e => {
@@ -1721,7 +1722,8 @@
             .then(response => response.json())
             .then(data => {
               if (data.result === 'success') {
-                messageElement.textContent = 'Thank you for signing up!';
+                // CHANGED: Use the successMessage parameter here
+                messageElement.textContent = successMessage; 
                 messageElement.classList.add('success');
                 form.reset();
               } else {
@@ -1740,8 +1742,10 @@
         });
       };
 
-      handleFormSubmit(innovatorForm, 'innovator-form-message');
-      handleFormSubmit(respondentForm, 'respondent-form-message');
+      // CHANGED: Add your custom messages here as the third argument
+      handleFormSubmit(innovatorForm, 'innovator-form-message', 'Thank you for signing up! This is the start of something big...');
+      handleFormSubmit(respondentForm, 'respondent-form-message', "You're in! Your voice will help decide which ideas become reality. We'll reach out with opportunities soon.");
+
     </script>
 
 </body>
