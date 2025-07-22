@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qurate - Behavioral Economics Informed Market Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6a36a8;
+            --primary-dark: #5a2e91;
+            --primary-light: #f2edf9;
+            --secondary: #212136;
+            --accent: #ffd166;
+            --light-gray: #f9f9fd;
+            --dark-gray: #6e7191;
+            --white: #ffffff;
+            --black: #121212;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(106, 54, 168, 0.08);
+            --gradient: linear-gradient(135deg, #6a36a8 0%, #9d71d1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        p {
+            font-weight: 400;
+        }
+
+        section {
+            padding: 120px 0; /* Default section padding */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.3px;
+            font-size: 15px;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(106, 54, 168, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 54, 168, 0.35);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen */
+            width: 280px;
+            height: 100%;
+            background-color: var(--secondary);
+            color: white;
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .mobile-nav .nav-links a {
+            color: white;
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+         .mobile-nav .nav-links a::after {
+            background-color: var(--accent);
+        }
+
+        .mobile-nav .auth-buttons {
+            flex-direction: column;
+            gap: 20px;
+        }
+         .mobile-nav .auth-buttons .btn {
+             width: 100%;
+         }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(242, 237, 249, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: var(--primary);
+        }
+
+        .tagline strong {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline strong::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 209, 102, 0.5);
+            bottom: 2px;
+            left: 0;
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Floating shapes */
+        .shape {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: var(--primary);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            background: var(--accent);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--dark-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gradient);
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(106, 54, 168, 0.12);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            background: var(--primary-light);
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: var(--secondary);
+        }
+
+        .feature-card p {
+            color: var(--dark-gray);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Research Methods Section */
+        .research-methods {
+            background-color: var(--light-gray);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .method-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(106, 54, 168, 0.08);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .method-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--primary-light), transparent);
+            transition: height 0.3s ease;
+            z-index: -1;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .method-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(106, 54, 168, 0.15);
+            border-color: rgba(106, 54, 168, 0.2);
+        }
+
+        .method-card:hover::after {
+            height: 100%;
+        }
+
+        .method-icon {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .method-icon img {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 5px 10px rgba(106, 54, 168, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover .method-icon img {
+            transform: scale(1.1);
+        }
+
+        .method-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .method-card p {
+            color: var(--dark-gray);
+            font-size: 15px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--white);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 35px; /* Center vertically with the number */
+            right: 0;
+            width: calc(50% - 35px); /* Connect number to line start */
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), transparent);
+            display: none;
+        }
+         .step:not(:last-child)::after {
+            display: block; /* Show connector line for all but the last step */
+            right: -25px; /* Position line */
+            width: 50px; /* Fixed line width */
+            transform: translateX(50%);
+         }
+
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .step:not(:last-child)::after {
+                display: block;
+                width: calc(100% - 40px); /* Line stretches between steps */
+                right: auto;
+                left: calc(50% + 20px); /* Start after the circle */
+                transform: none;
+                background: var(--primary); /* Solid line */
+                top: 35px; /* Vertically centered */
+            }
+
+             /* Adjust the position of the step content to account for line gap */
+             .step:not(:last-child) {
+                 padding-right: 60px; /* Make space for the connector */
+             }
+             .step:not(:first-child) {
+                 padding-left: 60px; /* Make space for the connector */
+             }
+
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 20px rgba(106, 54, 168, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: var(--secondary);
+        }
+
+        .step p {
+            color: var(--dark-gray);
+            font-size: 15px;
+        }
+
+         /* Connector line styling */
+         .steps-container {
+             position: relative;
+         }
+
+         .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 145px; /* Position line visually below the numbers */
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px); /* Adjust width */
+            max-width: 1000px; /* Prevent line from stretching too much */
+            height: 2px;
+            background-color: var(--primary);
+            z-index: 1;
+            display: none; /* Hide by default, show on larger screens */
+         }
+
+         @media (min-width: 992px) {
+             .steps-container::before {
+                 display: block;
+             }
+              .step::after { /* Hide step-level pseudo-element line */
+                  display: none !important;
+              }
+              .step {
+                  padding: 0 15px; /* Reset padding adjusted for step-level lines */
+              }
+         }
+
+
+        /* User Types Section */
+        .user-types {
+            background-color: var(--light-gray);
+        }
+
+        .user-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min width */
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-type-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(106, 54, 168, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transition: all 0.3s;
+        }
+
+        .user-type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(106, 54, 168, 0.15);
+            border-color: rgba(106, 54, 168, 0.2);
+        }
+
+        .user-type-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .user-type-card:hover .user-type-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(106, 54, 168, 0.15);
+        }
+
+        .user-type-icon i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+
+        .user-type-card h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: var(--secondary);
+        }
+
+        .user-type-card p {
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+            flex-grow: 1;
+            font-size: 15px;
+        }
+
+        .user-type-card .btn {
+            width: 100%;
+            margin-top: auto; /* Push button to the bottom */
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236a36a8' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .testimonials .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min width */
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(106, 54, 168, 0.08);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 120px;
+            font-family: 'Playfair Display', serif;
+            color: rgba(106, 54, 168, 0.1);
+            line-height: 0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(106, 54, 168, 0.12);
+            border-color: rgba(106, 54, 168, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--secondary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            margin-right: 15px;
+            border: 3px solid rgba(106, 54, 168, 0.15);
+            overflow: hidden;
+            flex-shrink: 0; /* Prevent image from shrinking */
+        }
+
+        .author-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the circular area */
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--secondary);
+            line-height: 1.2;
+        }
+
+        .author-info p {
+            color: var(--dark-gray);
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        /* University Endorsements Section */
+        .endorsements {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+
+        .endorsements::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(106, 54, 168, 0.2), transparent);
+        }
+
+        .endorsements::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(106, 54, 168, 0.2), transparent);
+        }
+
+        .university-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 60px; /* Increased gap for better spacing */
+            margin-top: 50px;
+        }
+
+        .university-logo {
+            text-align: center;
+            transition: transform 0.3s ease;
+            flex-shrink: 0; /* Prevent shrinking */
+            flex-basis: 150px; /* Suggest a base width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .university-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .university-logo img {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+            max-width: 130px;
+            height: auto;
+        }
+
+        .university-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .university-logo p {
+            font-weight: 600;
+            margin-top: 15px;
+            color: var(--dark-gray);
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .university-logo:hover p {
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(242, 237, 249, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--secondary);
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: #fff;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-column ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-column ul li a i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .footer-info .logo {
+            color: white; /* Adjust logo color for dark background */
+            margin-bottom: 20px;
+        }
+
+         .footer-info .logo::before {
+             background: var(--accent); /* Ensure accent color dot is visible */
+         }
+
+        .footer-info p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header-content {
+                justify-content: space-between; /* Space out logo and button */
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .features-grid,
+            .methods-grid,
+            .user-types-grid,
+            .testimonials-grid,
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min width */
+            }
+
+            .step::after { /* Revert to mobile line styling if needed */
+                 display: block;
+                 top: 35px;
+                 right: -15%;
+                 width: 30%;
+                 height: 2px;
+                 background: linear-gradient(to right, var(--primary), transparent);
+                 transform: none;
+             }
+             .step:last-child::after {
+                 display: none;
+             }
+             .step:not(:last-child)::after {
+                  display: block;
+                  right: auto;
+                  left: calc(50% + 35px); /* Start line after circle */
+                  width: 40px; /* Fixed width for mobile line */
+                  transform: translateX(0);
+                  background: var(--primary);
+             }
+             .steps-container::before { /* Hide large screen line */
+                 display: none;
+             }
+
+             .step {
+                 padding: 0 10px; /* Adjust padding */
+             }
+             .step:not(:last-child) {
+                  padding-right: 20px; /* Add some space after the step */
+             }
+             .step:not(:first-child) {
+                  padding-left: 20px; /* Add some space before the step */
+             }
+
+
+        }
+
+        @media (max-width: 767px) {
+             .hero {
+                 padding: 150px 0 80px;
+             }
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .section-subtitle {
+                 font-size: 15px;
+                 margin-bottom: 30px;
+            }
+
+            .features-grid,
+            .methods-grid,
+            .user-types-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr; /* Stack columns on very small screens */
+                gap: 30px;
+            }
+
+             .testimonial-card::before {
+                 font-size: 80px;
+                 top: 15px;
+                 left: 20px;
+             }
+             .testimonial-text {
+                 font-size: 15px;
+             }
+             .author-info h4 {
+                 font-size: 16px;
+             }
+             .author-info p {
+                 font-size: 13px;
+             }
+
+
+            .university-logos {
+                gap: 30px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+
+            .cta p {
+                font-size: 16px;
+            }
+
+            footer {
+                padding: 60px 0 20px;
+            }
+
+            .footer-content {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+             .footer-column h3 {
+                 font-size: 18px;
+                 margin-bottom: 20px;
+             }
+
+             .footer-column ul li {
+                 margin-bottom: 8px;
+             }
+             .footer-column ul li a, .footer-info p {
+                 font-size: 14px;
+             }
+
+
+            .social-links {
+                justify-content: center;
+            }
+
+             .footer-bottom {
+                 margin-top: 40px;
+                 padding-top: 20px;
+                 font-size: 12px;
+             }
+
+        }
+         @media (max-width: 480px) {
+             .container {
+                 padding: 0 20px;
+             }
+              .hero h1 {
+                 font-size: 32px;
+              }
+              .tagline {
+                 font-size: 16px;
+              }
+              .section-title {
+                 font-size: 24px;
+              }
+              .mobile-nav {
+                  width: 250px;
+                  right: -280px;
+              }
+         }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Qurate</a>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#methods">Methods</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#for-you">For You</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-outline">Log In</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+     <div class="mobile-nav" id="mobile-nav">
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#methods">Methods</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#for-you">For You</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="auth-buttons">
+             <a href="#" class="btn btn-outline">Log In</a>
+             <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+     </div>
+
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content animate__animated animate__fadeInUp">
+                    <h1>Unlock Deeper Insights with Behavioral Economics</h1>
+                    <p class="tagline">Your market research, powered by **how people actually decide**.</p>
+                    <p>Qurate goes beyond traditional surveys to reveal the hidden psychological drivers behind consumer choices. Understand motives, predict behavior, and build products and campaigns that truly resonate.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary animate__animated animate__pulse animate__infinite">Get a Demo</a>
+                        <a href="#how-it-works" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">Why Choose Qurate?</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">Discover the core advantages of integrating behavioral economics into your market research strategy.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Behavioral Insights</h3>
+                        <p>Understand the subconscious biases and heuristics that influence decision-making, providing a richer, more accurate view of your target audience.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <div class="feature-icon">
+                           <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Predictive Power</h3>
+                        <p>Move from correlation to causation. Our methods help you predict future behavior based on established psychological principles, not just stated preferences.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Actionable Recommendations</h3>
+                        <p>Get clear, practical strategies and nudges derived directly from behavioral science findings that you can implement immediately for impact.</p>
+                    </div>
+                     <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.8s">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Authentic Responses</h3>
+                        <p>Design studies that minimize social desirability bias and reveal what people are likely to *do*, not just what they say they'll do.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-methods" id="methods">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">Our Behavioral Methods</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">We employ a suite of validated behavioral tools to uncover genuine insights.</p>
+
+                <div class="methods-grid">
+                    <div class="method-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <div class="method-icon">
+                            <img src="https://dummyimage.com/70x70/6a36a8/fff&text=IAT" alt="IAT Icon"> </div>
+                        <h3>Implicit Association Test (IAT)</h3>
+                        <p>Measure automatic associations between concepts and attitudes to reveal unconscious preferences.</p>
+                    </div>
+                    <div class="method-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                         <div class="method-icon">
+                            <img src="https://dummyimage.com/70x70/6a36a8/fff&text=Choice" alt="Choice Icon"> </div>
+                        <h3>Discrete Choice Experiments</h3>
+                        <p>Simulate real-world decision-making scenarios to understand trade-offs and value perception.</p>
+                    </div>
+                    <div class="method-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                         <div class="method-icon">
+                            <img src="https://dummyimage.com/70x70/6a36a8/fff&text=Framing" alt="Framing Icon"> </div>
+                        <h3>Framing & Priming Studies</h3>
+                        <p>Analyze how the presentation of information influences decisions and perceptions.</p>
+                    </div>
+                     <div class="method-card animate__animated animate__fadeInUp animate__delay-0.8s">
+                         <div class="method-icon">
+                            <img src="https://dummyimage.com/70x70/6a36a8/fff&text=Attention" alt="Attention Icon"> </div>
+                        <h3>Attention & Emotion Tracking</h3>
+                        <p>Utilize technologies to understand non-conscious reactions and engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">How Qurate Works</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">Our process is designed for seamless collaboration and impactful results.</p>
+
+                <div class="steps-container"> <div class="steps">
+                        <div class="step animate__animated animate__fadeInUp animate__delay-0.2s">
+                            <div class="step-number">1</div>
+                            <h3>Define Objectives</h3>
+                            <p>We start by deeply understanding your business challenge and research goals.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInUp animate__delay-0.4s">
+                            <div class="step-number">2</div>
+                            <h3>Design Study</h3>
+                            <p>Our experts design a custom study leveraging the most relevant behavioral methods.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInUp animate__delay-0.6s">
+                            <div class="step-number">3</div>
+                            <h3>Collect Data</h3>
+                            <p>We deploy the study to your target audience using our robust platform.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInUp animate__delay-0.8s">
+                            <div class="step-number">4</div>
+                            <h3>Analyze & Report</h3>
+                            <p>We analyze results through a behavioral lens, providing clear, actionable insights and recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="user-types" id="for-you">
+             <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">Who Benefits from Qurate?</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">Our behavioral insights provide value across various functions and industries.</p>
+
+                <div class="user-types-grid">
+                    <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <div class="user-type-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Product Teams</h3>
+                        <p>Understand how users truly interact with features and design products that align with natural behavior patterns.</p>
+                         <a href="#contact" class="btn btn-outline">Learn More</a>
+                    </div>
+                     <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <div class="user-type-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Marketing & Sales</h3>
+                        <p>Craft messaging, pricing strategies, and campaigns that effectively leverage psychological principles for higher conversion.</p>
+                         <a href="#contact" class="btn btn-outline">Learn More</a>
+                    </div>
+                     <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <div class="user-type-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Market Research Analysts</h3>
+                        <p>Add a powerful new dimension to your research toolkit and deliver deeper, more predictive insights to stakeholders.</p>
+                         <a href="#contact" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+             <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">What Our Clients Say</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">Hear from leaders who have unlocked new possibilities with Qurate.</p>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <p class="testimonial-text">"Qurate's behavioral approach completely changed how we think about user onboarding. The insights were non-obvious and directly led to a significant increase in activation rates."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://dummyimage.com/60x60/6a36a8/fff&text=JP" alt="Client Avatar"> </div>
+                            <div class="author-info">
+                                <h4>Jane P.</h4>
+                                <p>Head of Product, Tech Co.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="testimonial-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <p class="testimonial-text">"We've always relied on traditional surveys, but Qurate uncovered motivations we never would have found. Their recommendations were incredibly practical and boosted our campaign ROI."</p>
+                        <div class="testimonial-author">
+                             <div class="author-image">
+                                <img src="https://dummyimage.com/60x60/6a36a8/fff&text=MK" alt="Client Avatar"> </div>
+                            <div class="author-info">
+                                <h4>Mark K.</h4>
+                                <p>Marketing Director, E-commerce Brand</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="testimonial-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <p class="testimonial-text">"As a research analyst, Qurate is a game-changer. It adds a layer of depth and predictive accuracy that standard quantitative or qualitative methods often miss."</p>
+                        <div class="testimonial-author">
+                             <div class="author-image">
+                                <img src="https://dummyimage.com/60x60/6a36a8/fff&text=SR" alt="Client Avatar"> </div>
+                            <div class="author-info">
+                                <h4>Sarah R.</h4>
+                                <p>Senior Market Research Analyst, Consulting Firm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="endorsements">
+             <div class="container">
+                <h2 class="section-title animate__animated animate__fadeIn">Backed by Academic Rigor</h2>
+                <p class="section-subtitle animate__animated animate__fadeIn">Our methodologies are grounded in principles from leading institutions.</p>
+
+                 <div class="university-logos">
+                    <div class="university-logo animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <img src="https://dummyimage.com/120x60/9d71d1/fff&text=UNIVERSITY" alt="University 1 Logo"> <p>University Name</p>
+                    </div>
+                     <div class="university-logo animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <img src="https://dummyimage.com/120x60/9d71d1/fff&text=INSTITUTE" alt="Institute 1 Logo"> <p>Institute Name</p>
+                    </div>
+                     <div class="university-logo animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <img src="https://dummyimage.com/120x60/9d71d1/fff&text=BUSINESS+SCHOOL" alt="Business School 1 Logo"> <p>Business School Name</p>
+                    </div>
+                      <div class="university-logo animate__animated animate__fadeInUp animate__delay-0.8s">
+                        <img src="https://dummyimage.com/120x60/9d71d1/fff&text=RESEARCH+LAB" alt="Research Lab 1 Logo"> <p>Research Lab Name</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+
+        <section class="cta" id="contact">
+             <div class="container">
+                <h2 class="animate__animated animate__fadeIn">Ready to See Human Behavior in Action?</h2>
+                <p class="animate__animated animate__fadeIn">Unlock the power of behavioral economics for your market research. Contact us today for a personalized demo.</p>
+                <a href="mailto:info@qurate.com" class="btn btn-primary btn-large animate__animated animate__pulse animate__infinite animate__delay-1s">Request a Demo</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-info">
+                    <a href="#" class="logo">Qurate</a>
+                    <p>Empowering market research with the science of human decision-making.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features"><i class="fas fa-caret-right"></i> Features</a></li>
+                        <li><a href="#methods"><i class="fas fa-caret-right"></i> Methods</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-caret-right"></i> How It Works</a></li>
+                        <li><a href="#for-you"><i class="fas fa-caret-right"></i> For You</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-caret-right"></i> Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                         <li><a href="mailto:info@qurate.com"><i class="fas fa-envelope"></i> info@qurate.com</a></li>
+                         <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +1 (234) 567-890</a></li>
+                         <li><i class="fas fa-map-marker-alt"></i> 123 Behavioral Ave, Insight City, BE 45678</li> </ul>
+                </div>
+                 <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Qurate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const navLinks = document.querySelectorAll('.mobile-nav .nav-links a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            // Toggle between bars and times icons
+             const icon = mobileMenuBtn.querySelector('i');
+             if (mobileNav.classList.contains('open')) {
+                 icon.classList.remove('fa-bars');
+                 icon.classList.add('fa-times');
+             } else {
+                 icon.classList.remove('fa-times');
+                 icon.classList.add('fa-bars');
+             }
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                 const icon = mobileMenuBtn.querySelector('i');
+                 icon.classList.remove('fa-times');
+                 icon.classList.add('fa-bars');
+            });
+        });
+
+         // Close mobile menu when clicking outside (optional)
+         document.addEventListener('click', (event) => {
+             const isClickInsideNav = mobileNav.contains(event.target);
+             const isClickOnButton = mobileMenuBtn.contains(event.target);
+
+             if (!isClickInsideNav && !isClickOnButton && mobileNav.classList.contains('open')) {
+                 mobileNav.classList.remove('open');
+                 const icon = mobileMenuBtn.querySelector('i');
+                 icon.classList.remove('fa-times');
+                 icon.classList.add('fa-bars');
+             }
+         });
+
+
+    </script>
+
+</body>
+</html>

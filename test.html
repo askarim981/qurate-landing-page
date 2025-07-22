@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qurate - Innovate. Validate. Create</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Updated Color Scheme */
+            --primary-purple: #3B115E; /* Deep purple for primary elements */
+            --primary-purple-dark: #2A0D45; /* Darker shade for hovers */
+            --primary-purple-light: #E0D6EB; /* Light purple for backgrounds/footer */
+            --primary-purple-very-light: #F5F0FA;
+
+            --pure-white: #FFFFFF;
+            --off-white-bg: #FDFBFF;
+
+            --text-dark-purple: #3B115E;
+            --text-medium-purple: #6C29A6;
+            --text-white: #FFFFFF;
+
+            --accent-highlight-purple: #A450E5;
+            --accent-trim-light: var(--primary-purple-light);
+            --accent-trim-dark: var(--primary-purple-dark);
+
+
+            --border-radius: 10px;
+            --box-shadow-color: rgba(59, 17, 94, 0.08);
+            --box-shadow-hover-color: rgba(59, 17, 94, 0.15);
+            --gradient-purple: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
+            --gradient-light-purple: linear-gradient(135deg, var(--primary-purple-light) 0%, var(--primary-purple-very-light) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--text-dark-purple);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-dark-purple);
+        }
+
+        p {
+            font-weight: 400;
+            color: var(--text-medium-purple);
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 3px 20px rgba(59, 17, 94, 0.07);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.2px;
+            font-size: 14px;
+            border: 2px solid transparent;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-purple-very-light);
+            border-color: var(--primary-purple-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            color: var(--text-white);
+            border: none;
+            box-shadow: 0 4px 12px var(--box-shadow-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-purple-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--box-shadow-hover-color);
+        }
+        
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-purple);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: var(--primary-purple-dark);
+            color: var(--text-white);
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav .nav-links a {
+            color: var(--text-white);
+            font-size: 17px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .mobile-nav .nav-links a::after {
+            background-color: var(--accent-highlight-purple);
+        }
+         .mobile-nav .nav-links a:hover {
+            color: var(--primary-purple-light);
+        }
+
+        .mobile-nav .auth-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .mobile-nav .auth-buttons .btn {
+            width: 100%;
+        }
+        .mobile-nav .btn-outline {
+            border-color: var(--primary-purple-light);
+            color: var(--text-white);
+        }
+        .mobile-nav .btn-outline:hover {
+            background-color: var(--accent-highlight-purple);
+            border-color: var(--accent-highlight-purple);
+            color: var(--text-white);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-purple-very-light) 0%, var(--pure-white) 100%);
+        }
+
+        /* --- ✨ NEW - Keyframes for the animated gradient text --- */
+        @keyframes animated-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* --- ✨ NEW - Keyframes for the background blob animation --- */
+        @keyframes move-blob {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+            to {
+                transform: translate(40px, -60px) scale(1.2);
+            }
+        }
+
+        /* --- ✨ NEW - Background blob styling --- */
+        .background-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .blob1 {
+            width: 450px;
+            height: 450px;
+            top: -150px;
+            left: -100px;
+            background-color: var(--primary-purple-light);
+            animation: move-blob 18s infinite alternate;
+        }
+        .blob2 {
+            width: 350px;
+            height: 350px;
+            bottom: -120px;
+            right: -150px;
+            background-color: var(--accent-highlight-purple);
+            animation: move-blob 22s infinite alternate-reverse;
+        }
+
+
+        .hero-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative; /* Ensure content is above blobs */
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-highlight-purple), var(--primary-purple-dark), var(--primary-purple));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animated-gradient 10s ease-in-out infinite;
+        }
+        
+        .strapline {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: var(--text-medium-purple);
+        }
+
+        .tagline strong {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            color: var(--primary-purple);
+        }
+
+        .tagline strong::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(164, 80, 229, 0.2);
+            bottom: 1px;
+            left: 0;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 35px;
+            color: var(--text-medium-purple);
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex-grow: 1;
+            padding: 12px 18px;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--primary-purple-light);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 4px rgba(122, 40, 203, 0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        .form-message.success {
+            color: #28a745;
+        }
+        .form-message.error {
+            color: #dc3545;
+        }
+
+
+        /* Features Section */
+        .features {
+            background-color: var(--pure-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--text-dark-purple);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 17px;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            color: var(--text-medium-purple);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid var(--primary-purple-very-light);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--gradient-purple);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px var(--box-shadow-hover-color);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-purple);
+            background: var(--primary-purple-very-light);
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-medium-purple);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Research Methods Section */
+        .research-methods {
+            background-color: var(--primary-purple-very-light);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .method-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .method-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--primary-purple-very-light), transparent);
+            transition: height 0.3s ease;
+            z-index: -1;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light);
+        }
+
+        .method-card:hover::after {
+            height: 100%;
+        }
+
+        .method-icon {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .method-icon img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(59, 17, 94, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover .method-icon img {
+            transform: scale(1.1);
+        }
+
+        .method-card h3 {
+            margin-bottom: 10px;
+            font-size: 19px;
+            color: var(--text-dark-purple);
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .method-card p {
+            color: var(--text-medium-purple);
+            font-size: 14px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--pure-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            border: 1px solid var(--primary-purple-very-light);
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark-purple);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card p {
+            font-size: 16px;
+            color: var(--text-medium-purple);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--primary-purple-very-light);
+        }
+
+        .steps-container {
+            position: relative;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background-color: var(--primary-purple-light);
+            z-index: 1;
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .steps-container::before {
+                display: block;
+            }
+             .step::after {
+                display: none !important;
+            }
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: calc(50% + 40px);
+            width: 30px;
+            height: 2px;
+            background: var(--primary-purple-light);
+            display: block;
+        }
+        .step:last-child::after {
+            display: none;
+        }
+
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-purple);
+            color: var(--text-white);
+            border-radius: 50%;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 18px rgba(59, 17, 94, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .step p {
+            color: var(--text-medium-purple);
+            font-size: 15px;
+        }
+
+        /* User Types Section */
+        .user-types {
+            background-color: var(--primary-purple-very-light);
+        }
+
+        .user-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-type-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: all 0.3s;
+            border: 1px solid var(--primary-purple-very-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-purple);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .user-type-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light);
+        }
+
+        .user-type-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .user-type-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-purple-very-light);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .user-type-card:hover .user-type-icon {
+            transform: scale(1.1);
+            background-color: var(--primary-purple-light);
+            box-shadow: 0 8px 20px rgba(59, 17, 94, 0.1);
+        }
+
+        .user-type-icon i {
+            font-size: 36px;
+            color: var(--primary-purple);
+        }
+
+        .user-type-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark-purple);
+            font-weight: 600;
+        }
+
+        .user-type-card p {
+            color: var(--text-medium-purple);
+            margin-bottom: 25px;
+            flex-grow: 1;
+            font-size: 15px;
+        }
+
+        .user-type-card .btn {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--pure-white);
+        }
+
+        .testimonials .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--pure-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 8px 25px var(--box-shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--primary-purple-very-light);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card::before {
+            content: '“';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 80px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            color: rgba(122, 40, 203, 0.1);
+            line-height: 0.8;
+            z-index: 0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--box-shadow-hover-color);
+            border-color: var(--primary-purple-light);
+        }
+
+        .testimonial-text {
+            font-style: normal;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-medium-purple);
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-purple-very-light);
+            margin-right: 12px;
+            border: 2px solid var(--primary-purple-light);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 3px;
+            color: var(--text-dark-purple);
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: var(--text-medium-purple);
+            font-size: 13px;
+            line-height: 1.2;
+        }
+
+        /* University Endorsements Section */
+        .endorsements {
+            padding: 80px 0;
+            background-color: var(--pure-white);
+        }
+
+        .endorsements::before, .endorsements::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-purple-light), transparent);
+        }
+        .endorsements::before { top: 0; }
+        .endorsements::after { bottom: 0; }
+
+        @keyframes scroll {
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .logo-scroller {
+            max-width: 100%;
+            overflow: hidden;
+            -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+            mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+        }
+
+        .scroller-inner {
+            display: flex;
+            flex-wrap: nowrap;
+            width: max-content;
+            gap: 3rem;
+            animation: scroll 40s linear infinite;
+        }
+
+        @media (prefers-reduced-motion) {
+            .scroller-inner {
+                animation-play-state: paused;
+            }
+        }
+
+        .university-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .university-logo img {
+            filter: grayscale(100%) opacity(0.6);
+            transition: filter 0.3s ease, opacity 0.3s ease;
+            max-width: 130px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .university-logo:hover img {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        .university-logo p {
+            font-weight: 500;
+            margin-top: 12px;
+            color: var(--text-medium-purple);
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .university-logo:hover p {
+            color: var(--primary-purple);
+        }
+
+        .scroller-inner:hover {
+            animation-play-state: paused;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background-color: var(--primary-purple-very-light);
+            padding: 80px 30px;
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: var(--text-dark-purple);
+            font-weight: 700;
+        }
+
+        .cta p {
+            font-size: 17px;
+            margin-bottom: 35px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-medium-purple);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-purple-dark);
+            color: var(--text-white);
+            padding: 70px 0 25px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-white);
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 2px;
+            background: var(--accent-highlight-purple);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-column ul li:hover {
+            transform: translateX(4px);
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: var(--primary-purple-light);
+            font-size: 14px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--text-white);
+        }
+
+        .footer-column ul li a i {
+            margin-right: 8px;
+            color: var(--accent-highlight-purple);
+            font-size: 15px;
+        }
+
+        .footer-info .logo {
+            color: var(--text-white);
+            margin-bottom: 15px;
+        }
+
+        .footer-info .logo::before {
+            background: var(--accent-highlight-purple);
+        }
+
+        .footer-info p {
+            font-size: 14px;
+            color: var(--primary-purple-light);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-highlight-purple);
+            color: var(--text-white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            color: var(--primary-purple-light);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .tagline {
+                font-size: 18px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .section-subtitle {
+                font-size: 16px;
+                margin-bottom: 35px;
+            }
+
+            .features-grid,
+            .methods-grid,
+            .user-types-grid,
+            .testimonials-grid,
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card::before {
+                font-size: 70px;
+                top: 10px;
+                left: 15px;
+            }
+            .testimonial-text {
+                font-size: 14px;
+            }
+            .author-info h4 {
+                font-size: 15px;
+            }
+            .author-info p {
+                font-size: 12px;
+            }
+
+            .university-logos {
+                gap: 25px;
+            }
+            .university-logo img {
+                max-width: 90px;
+                height: 40px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+            .cta p {
+                font-size: 16px;
+            }
+            .footer-content {
+                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+             .step {
+                min-width: 100%;
+                margin-bottom: 30px;
+            }
+            .step:last-child {
+                margin-bottom: 0;
+            }
+            .step::after {
+                left: 50%;
+                bottom: -15px;
+                top: auto;
+                width: 2px;
+                height: 15px;
+                transform: translateX(-50%);
+            }
+             .step:last-child::after {
+                display: none;
+            }
+            .steps-container::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+             .hero {
+                padding: 120px 0 80px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .tagline {
+                font-size: 17px;
+            }
+             .hero p {
+                font-size: 15px;
+            }
+            .cta-buttons .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .cta-buttons .btn:last-child {
+                margin-bottom: 0;
+            }
+            .cta-buttons {
+                gap: 10px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+            .section-subtitle {
+                font-size: 15px;
+            }
+             .features-grid {
+                 max-width: 90%;
+                 grid-template-columns: 1fr;
+             }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-column ul li a {
+                justify-content: center;
+            }
+            .footer-info .logo {
+                 justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .waitlist-form {
+                flex-direction: column;
+            }
+            .blob1, .blob2 {
+                display: none; /* Optionally hide blobs on small screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+    <img src="Images/logo_dark.png" alt="Qurate Logo" style="height: 70px;">
+</a>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#user-types">For Who?</a>
+                    <a href="#testimonials">Testimonials</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="#cta" class="btn btn-primary">Join Waitlist</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Open Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#user-types">For Who?</a>
+            <a href="#testimonials">Testimonials</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="#cta" class="btn btn-primary">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="background-blob blob1"></div>
+            <div class="background-blob blob2"></div>
+            
+            <div class="container">
+                <div class="hero-content animate__animated animate__fadeInUp">
+                    <h1 class="animate__animated animate__fadeInDown animate__delay-0.5s">Innovate. <em>Validate.</em> Create</h1>
+                    <p class="tagline animate__animated animate__fadeInDown animate__delay-0.8s">Stop guessing. Start <strong>Qurating</strong>. Build businesses people actually want.</p>
+                    <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                        Qurate empowers aspiring entrepreneurs, start-ups, and SMEs to test their concepts with real-world feedback from ideation through to execution; streamlined for ease, speed, and affordability.
+                    </p>
+                    <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-1.2s">
+                        <a href="#cta" class="btn btn-primary">Validate Your Idea</a>
+                        <a href="#respondent-cta" class="btn btn-outline">Sign up as a Respondent</a>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Why Qurate?</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    We simplify the complex process of business idea validation, providing you with clear, actionable insights without the traditional cost and time. Learn if your idea works cheaply and quickly.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
+                        <h3>Centralised Validation Platform</h3>
+                        <p>Find all the tools and people you need to understand if there is merit to your business idea, all in one place.</p>
+                    </div>
+                     <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.5s">
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Behavioural Science-Backed Insights</h3>
+                        <p>Leverage tools designed to ask bias-free questions and ensure high-quality responses for reliable feedback. Receive insights you can action.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                        <h3>Affordable & Transparent Pricing</h3>
+                        <p>Validate your idea without the high costs of traditional market research, with a clear and simple pricing model.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Validation in Three Simple Steps</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Our platform guides you through a straightforward process to get the answers you need.
+                </p>
+                <div class="steps-container">
+                    <div class="steps">
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.4s">
+                            <div class="step-number">1</div>
+                            <h3>Define Your Idea</h3>
+                            <p>Clearly outline your business concept, target audience, and key assumptions you want to test.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.6s">
+                            <div class="step-number">2</div>
+                            <h3>Launch Your Study</h3>
+                            <p>Choose your research methods, be it a survey or a focus group, set up your study with our easy-to-use tools, and go live.</p>
+                        </div>
+                        <div class="step animate__animated animate__fadeInRight animate__delay-0.8s">
+                            <div class="step-number">3</div>
+                            <h3>Analyse Results</h3>
+                            <p>Receive a comprehensive report with data visualisations and actionable insights to inform your next move. No PhD in Data Science needed!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Transparent Pricing</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    A simple and clear pricing model to get you started. Would you rather spend £75 to validate your idea, or risk £750, £7,500, or £75,000 building something nobody wants?
+                </p>
+                <div class="pricing-grid">
+                    <div class="pricing-card animate__animated animate__fadeInUp animate__delay-0.4s">
+                        <h3>Respondent Pool</h3>
+                        <div class="price">£50</div>
+                        <p>This is the minimum pool limit which is split equally amongst the final number of respondents.</p>
+                    </div>
+                    <div class="pricing-card animate__animated animate__fadeInUp animate__delay-0.6s">
+                        <h3>Service Charge</h3>
+                        <div class="price">£25</div>
+                        <p>A one-time service charge for using the Qurate platform and tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="user-types" class="user-types">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">The Future of Innovation Needs Both Voices. Add Yours</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Qurate connects aspiring, early-stage entrepreneurs who need feedback with individuals ready to share their insights. Choose your path below.
+                </p>
+                <div class="user-types-grid">
+                    <div class="user-type-card animate__animated animate__fadeInUp">
+                        <div class="user-type-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>For Innovators & Entrepreneurs</h3>
+                        <p>Have a business idea? Minimise risk and make data-driven decisions by testing your concept with a real audience (filtered based on demographics and psychographics which align with your target audience) before you invest your time and money.</p>
+                        <a href="#cta" class="btn btn-primary">Join the Innovator Waitlist</a>
+                    </div>
+
+                    <div class="user-type-card animate__animated animate__fadeInUp animate__delay-0.2s">
+                        <div class="user-type-icon"><i class="fas fa-user-check"></i></div>
+                        <h3>For Respondents</h3>
+                        <p>Influence the next wave of products and services. Share your valuable opinions on new business ideas and get rewarded (in cold hard cash!) for your time and feedback.</p>
+                        <a href="#respondent-cta" class="btn btn-outline">Join the Respondent Panel</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Trusted by Innovators</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Hear what early users are saying about their experience with Qurate.
+                </p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animate__animated animate__flipInX">
+                        <p class="testimonial-text">"Qurate helped me quickly identify the core appeal of my app idea. The feedback was invaluable and saved me months of guesswork!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah L."></div> <div class="author-info">
+                                <h4>Sarah L.</h4>
+                                <p>Aspiring App Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate__animated animate__flipInX animate__delay-0.2s">
+                        <p class="testimonial-text">"As a student, getting real-world validation for my thesis project was crucial. Qurate made it accessible and affordable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mike P."></div> <div class="author-info">
+                                <h4>Mike P.</h4>
+                                <p>University Student</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate__animated animate__flipInX animate__delay-0.4s">
+                        <p class="testimonial-text">"We used Qurate to test a new feature concept and the insights helped us prioritise our development roadmap. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-image"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Emily Carter"></div> <div class="author-info">
+                                <h4>Dr. Emily C.</h4>
+                                <p>Product Innovation Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">This isn’t a form. It’s the first step in building what matters.</h2>
+                <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Don't let uncertainty hold you back. Join our waitlist and be the first to access the tools you need to build a successful, data-driven business.
+                </p>
+                <form id="innovator-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="entrepreneur">
+                    <input type="email" name="email" placeholder="Enter your email to join the innovator waitlist" required>
+                    <button type="submit" class="btn btn-primary">Get Early Access</button>
+                </form>
+                <div id="innovator-form-message" class="form-message"></div>
+            </div>
+        </section>
+        
+        <section class="endorsements">
+            <div class="container">
+                <h2 class="section-title animate__animated animate__fadeInUp">Collaborating with Academic & Startup Ecosystems</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-0.2s">
+                    We're proud to support and be supported by institutions fostering innovation. <br>(Logos are for demonstration purposes)
+                </p>
+            </div>
+
+            <div class="logo-scroller">
+                <div class="scroller-inner">
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                        <p>University of Oxford</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                        <p>University of Cambridge</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                        <p>King's College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                        <p>University of Warwick</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                        <p>UCL</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                        <p>Imperial College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                        <p>London School of Economics</p>
+                    </div>
+
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/1920px-University_of_Oxford.svg.png" alt="University of Oxford Logo">
+                        <p>University of Oxford</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/University_of_Cambridge_logo.svg/1920px-University_of_Cambridge_logo.svg.png" alt="University of Cambridge Logo">
+                        <p>University of Cambridge</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/King%27s_College_London_logo.svg/1280px-King%27s_College_London_logo.svg.png" alt="King's College London Logo">
+                        <p>King's College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/University_of_Warwick_logo.svg" alt="University of Warwick Logo">
+                        <p>University of Warwick</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d1/University_College_London_logo.svg/450px-University_College_London_logo.svg.png?20160617013815" alt="UCL Logo">
+                        <p>UCL</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" alt="Imperial College London Logo">
+                        <p>Imperial College London</p>
+                    </div>
+                    <div class="university-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/LSE_Logo.svg" alt="LSE Logo">
+                        <p>London School of Economics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="respondent-cta" class="cta" style="background-color: var(--primary-purple-very-light);">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInUp">Shape Future Products & Get Rewarded</h2>
+                <p class="animate__animated animate__fadeInUp animate__delay-0.2s">
+                    Join our trusted panel of respondents. Share your thoughts on new and exciting ideas, and help shape the future of business.
+                </p>
+                <form id="respondent-form" class="waitlist-form animate__animated animate__fadeInUp animate__delay-0.4s">
+                    <input type="hidden" name="type" value="respondent">
+                    <input type="email" name="email" placeholder="Enter your email to become a respondent" required>
+                    <button type="submit" class="btn btn-outline">Sign Up to Respond</button>
+                </form>
+                <div id="respondent-form-message" class="form-message"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-info">
+                    <a href="#" class="logo">
+    <img src="Images/logo_slogan_light.png" alt="Qurate Logo" style="height: 100px;">
+</a>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#user-types"><i class="fas fa-chevron-right"></i> For Who?</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-book-open"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> Validation Tools</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite"></i> Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Qurate. All Rights Reserved. Built with a passion for innovation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            const isOpen = mobileNav.classList.contains('open');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            } else {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = mobileNav.querySelectorAll('.nav-links a, .auth-buttons a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simple Intersection Observer for animations
+        const animatedElements = document.querySelectorAll('.animate__animated');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.visibility = 'visible';
+                } else {
+                    entry.target.style.visibility = 'hidden';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedElements.forEach(el => {
+            el.style.visibility = 'hidden';
+            observer.observe(el);
+        });
+    </script>
+    
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyk_G51gpKt35KhyF0xGi1t1t6geKFv1EZjsKfS1fZfs8U876AG6a7ZT7bVxjFFjJhVZw/exec';
+      const innovatorForm = document.getElementById('innovator-form');
+      const respondentForm = document.getElementById('respondent-form');
+
+      // CHANGED: Added a 'successMessage' parameter to the function
+      const handleFormSubmit = (form, messageElementId, successMessage) => {
+        const messageElement = document.getElementById(messageElementId);
+        
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.innerHTML;
+
+          submitButton.disabled = true;
+          submitButton.innerHTML = 'Submitting...';
+          messageElement.textContent = '';
+          messageElement.className = 'form-message';
+
+          fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => response.json())
+            .then(data => {
+              if (data.result === 'success') {
+                // CHANGED: Use the successMessage parameter here
+                messageElement.textContent = successMessage; 
+                messageElement.classList.add('success');
+                form.reset();
+              } else {
+                throw new Error(data.message || 'An unknown error occurred.');
+              }
+            })
+            .catch(error => {
+              messageElement.textContent = 'Oops! Something went wrong. Please try again.';
+              messageElement.classList.add('error');
+              console.error('Error!', error.message);
+            })
+            .finally(() => {
+              submitButton.disabled = false;
+              submitButton.innerHTML = originalButtonText;
+            });
+        });
+      };
+
+      // CHANGED: Add your custom messages here as the third argument
+      handleFormSubmit(innovatorForm, 'innovator-form-message', 'Thank you for signing up! This is the start of something big...');
+      handleFormSubmit(respondentForm, 'respondent-form-message', "You're in! Your voice will help decide which ideas become reality. We'll reach out with opportunities soon.");
+
+    </script>
+
+</body>
+</html>
