@@ -1141,8 +1141,9 @@ header.scrolled {
 
         /* Responsive Adjustments */
         @media (max-width: 991px) {
-            .nav-links, .auth-buttons {
-                display: none;
+            header .header-content > .nav-links, 
+            header .header-content > .auth-buttons {
+            display: none;
             }
             .mobile-menu-btn {
                 display: block;
@@ -1621,7 +1622,7 @@ header.scrolled {
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-book-open"></i> Blog</a></li>
+                        <li><a href="blog.html"><i class="fas fa-book-open"></i> Blog</a></li>
                         <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
                         <li><a href="#"><i class="fas fa-tools"></i> Validation Tools</a></li>
                         <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
