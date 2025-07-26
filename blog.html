@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qurate Blog - Insights on Innovation and Validation</title>
+    <link rel="icon" href="dark.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+        :root {
+            --primary-purple: #3B115E; --primary-purple-dark: #2A0D45; --primary-purple-light: #E0D6EB; --primary-purple-very-light: #F5F0FA; --pure-white: #FFFFFF; --text-dark-purple: #3B115E; --text-medium-purple: #6C29A6; --text-white: #FFFFFF; --accent-highlight-purple: #A450E5; --border-radius: 10px; --box-shadow-color: rgba(59, 17, 94, 0.08); --gradient-purple: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
+        body { background-color: var(--primary-purple-very-light); color: var(--text-dark-purple); }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 30px; }
+        
+        /* Header Styles */
+        header { padding: 10px 0; background-color: rgba(255, 255, 255, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 65px; }
+        
+        /* Blog List Styles */
+        .blog-list-container { padding: 150px 0 80px; }
+        .blog-list-header { text-align: center; margin-bottom: 60px; }
+        .blog-list-header h1 { font-size: 3.5em; font-weight: 700; color: var(--text-dark-purple); }
+        .blog-list-header p { font-size: 1.2em; color: var(--text-medium-purple); max-width: 600px; margin: 10px auto 0; }
+        
+        .post-card {
+            background: var(--pure-white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--box-shadow-color);
+            margin-bottom: 30px;
+            padding: 35px 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(59, 17, 94, 0.12);
+        }
+        .post-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .post-card h2 a {
+            text-decoration: none;
+            color: var(--text-dark-purple);
+        }
+        .post-card .post-meta {
+            font-size: 0.9em;
+            color: var(--text-medium-purple);
+            margin-bottom: 15px;
+        }
+        .post-card p {
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="Images/logo_dark.png" alt="Qurate Logo">
+                </a>
+                </div>
+        </div>
+    </header>
+
+    <main class="blog-list-container">
+        <div class="container" style="max-width: 900px;">
+            <div class="blog-list-header">
+                <h1>The Qurate Blog</h1>
+                <p>Insights on innovation, entrepreneurship, and building businesses that matter.</p>
+            </div>
+
+            <article class="post-card">
+                <p class="post-meta">July 26, 2025</p>
+                <h2><a href="posts/why-validation-matters.html">Why 'Build It and They Will Come' is a Myth: The Power of Business Idea Validation</a></h2>
+                <p>Every entrepreneur starts with a spark—a brilliant idea that feels destined for success. But what if, after months of hard work, you launch to the sound of crickets? This is why validation is crucial...</p>
+                <a href="posts/why-validation-matters.html" class="read-more">Read More &rarr;</a>
+            </article>
+
+            </div>
+    </main>
+
+    </body>
+</html>
