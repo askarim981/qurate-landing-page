@@ -6,6 +6,7 @@
     <title>Qurate - Innovate. Validate. Create</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" href="dark.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
@@ -77,22 +78,27 @@
         }
 
         /* Header */
-        header {
-            padding: 20px 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05);
-            transition: all 0.3s ease;
-        }
+header {
+    padding: 5px 0; /* REDUCED: Makes the header shorter */
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05);
+    transition: all 0.3s ease;
+}
 
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 3px 20px rgba(59, 17, 94, 0.07);
-        }
+header.scrolled {
+    padding: 3px 0; /* REDUCED: Makes the header even shorter when scrolling */
+    box-shadow: 0 3px 20px rgba(59, 17, 94, 0.07);
+}
+
+.logo img { /* ADD THIS ENTIRE BLOCK */
+    height: 65px; /* Sets a new, more prominent height for the logo */
+    transition: height 0.3s ease; /* Optional: adds a smooth transition effect */
+}
 
         .header-content {
             display: flex;
@@ -1229,6 +1235,11 @@
         }
 
         @media (max-width: 767px) {
+
+            .logo img { /* ADD THIS RULE */
+        height: 55px; /* Sets a smaller logo height for mobile screens */
+        }
+
              .hero {
                 padding: 120px 0 80px;
             }
@@ -1293,7 +1304,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-    <img src="Images/logo_dark.png" alt="Qurate Logo" style="height: 70px;">
+    <img src="Images/logo_dark.png" alt="Qurate Logo">
 </a>
                 <nav class="nav-links">
                     <a href="#features">Features</a>
