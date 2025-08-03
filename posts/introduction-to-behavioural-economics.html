@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Introduction to Behavioural Economics - Qurate</title>
+    <meta name="description" content="A brief introduction to behavioural economics, using a simple lottery example to explain how our decision-making deviates from pure logic.">
+
+    <link rel="icon" href="../dark.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-purple: #3B115E;
+            --primary-purple-dark: #2A0D45;
+            --primary-purple-light: #E0D6EB;
+            --primary-purple-very-light: #F5F0FA;
+            --pure-white: #FFFFFF;
+            --text-dark-purple: #3B115E;
+            --text-medium-purple: #6C29A6;
+            --text-white: #FFFFFF;
+            --accent-highlight-purple: #A450E5;
+            --border-radius: 10px;
+            --box-shadow-color: rgba(59, 17, 94, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
+        body { background-color: var(--primary-purple-very-light); color: var(--text-dark-purple); line-height: 1.6; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 30px; }
+        
+        /* Header & Nav Styles (Copied from index.html) */
+        header { padding: 10px 0; background-color: rgba(255, 255, 255, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(59, 17, 94, 0.05); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 65px; }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { text-decoration: none; color: var(--text-medium-purple); font-weight: 500; font-size: 15px; }
+        .auth-buttons { display: flex; gap: 15px; }
+        .btn { padding: 10px 22px; border-radius: var(--border-radius); font-weight: 500; cursor: pointer; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%); color: var(--text-white); border: none; }
+        
+        /* --- NEW & IMPROVED BLOG STYLES --- */
+        .blog-hero {
+            padding: 150px 0 60px; /* Pushes title below header and adds space */
+            background-color: var(--pure-white);
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 15px auto;
+            color: var(--text-dark-purple);
+        }
+        .blog-hero .article-meta {
+            font-size: 1em;
+            color: var(--text-medium-purple);
+            font-weight: 500;
+        }
+
+        .article-container {
+            padding: 50px 0 80px;
+            background-color: var(--primary-purple-very-light);
+        }
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--pure-white);
+            padding: 40px 50px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--box-shadow-color);
+        }
+        .article-content h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--primary-purple-dark);
+        }
+        .article-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .article-content a {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .article-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles (Copied from index.html) */
+        footer { background-color: var(--primary-purple-dark); color: var(--text-white); padding: 70px 0 25px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 13px; }
+        /* --- ADD THESE FOOTER STYLES --- */
+.footer-info {
+    text-align: center; /* Center the logo and links */
+}
+.footer-info .logo {
+    display: block;
+    margin-bottom: 25px; /* Add space below the logo */
+}
+.footer-info .logo img {
+    height: 120px; /* INCREASED: Makes the logo prominent */
+    max-width: 100%;
+}
+.social-links {
+    display: flex;
+    justify-content: center; /* Center social media icons */
+    gap: 15px;
+    margin-top: 15px;
+}
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+.social-links a:hover {
+    background-color: var(--accent-highlight-purple);
+}
+        
+        /* Responsive */
+        @media (max-width: 767px) {
+            .logo img { height: 55px; }
+            .blog-hero { padding: 120px 20px 40px; }
+            .blog-hero h1 { font-size: 2.2em; }
+            .article-content { padding: 30px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <img src="../Images/logo_dark.png" alt="Qurate Logo">
+                </a>
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <h1>An Introduction to Behavioural Economics: Are We as Logical as We Think?</h1>
+            <p class="article-meta">Published on August 3, 2025 by The Qurate Team</p>
+        </section>
+
+        <div class="article-container">
+            <article class="article-content">
+                <p>For centuries, traditional economics has been built on a simple, yet powerful assumption: that humans are rational beings who make decisions to maximise their own self-interest. While this model is useful, it doesn't always capture the full picture of human behaviour. Enter behavioural economics, a field that combines insights from psychology and economics to understand why we sometimes make decisions that seem illogical.</p>
+                
+                <h2>A Simple Lottery Ticket Question</h2>
+                <p>Imagine you're offered a choice between two lotteries:</p>
+                <ul>
+                    <li><strong>Option A:</strong> A 100% chance to win £1 million.</li>
+                    <li><strong>Option B:</strong> An 89% chance to win £1 million, a 10% chance to win £5 million, and a 1% chance of winning nothing.</li>
+                </ul>
+                <p>Most people would choose Option A. It’s a sure thing. The certainty of becoming a millionaire is incredibly appealing, and the risk of winning nothing in Option B, however small, is enough to put us off.</p>
+                
+                <h2>Let's Change the Odds</h2>
+                <p>Now, consider a different choice:</p>
+                <ul>
+                    <li><strong>Option C:</strong> An 11% chance to win £1 million, and an 89% chance of winning nothing.</li>
+                    <li><strong>Option D:</strong> A 10% chance to win £5 million, and a 90% chance of winning nothing.</li>
+                </ul>
+                <p>In this scenario, a significant number of people switch their preference to Option D. Why? The chances of winning in both scenarios are low, so the allure of the much larger prize in Option D becomes more attractive. This is the essence of the <strong>Common Ratio Effect</strong>.</p>
+                
+                <h2>The Common Ratio Effect Explained</h2>
+                <p>If we were purely logical, our preference between the two sets of choices should remain consistent. The first choice (A vs B) and the second choice (C vs D) are mathematically related. Option C is simply Option A with the probability of winning reduced by a common ratio (multiplying both by 0.11), and Option D is Option B with its probabilities also reduced by the same ratio (multiplying by 0.11).</p>
+                <p>The fact that people switch their preference from the 'safe' option to the 'risky' option shows that we don't treat probability in a linear, logical way. When the chances of winning are high, we are risk-averse and prefer certainty. But when the chances of winning are low, we become risk-seeking and are more attracted by the size of the potential prize.</p>
+
+                <h2>Why This Matters for Your Business</h2>
+                <p>Understanding these cognitive biases is not just an academic exercise. It has real-world implications for how you design your products, price your services, and market your brand. Are you framing your offer in a way that appeals to your customers' desire for certainty? Or are you leveraging the appeal of a long-shot, high-reward outcome to drive engagement?</p>
+                <p>By understanding how people *really* think, you can build a business that resonates on a deeper, psychological level. And that's the first step towards building something people truly want.</p>
+                <p>Ready to move beyond guesswork and understand the real drivers of customer behaviour? <a href="../index.html#cta">Start validating with Qurate today.</a></p>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column footer-info" style="grid-column: 1 / -1;">
+                <a href="../index.html" class="logo">
+                    <img src="../Images/logo_slogan_light.png" alt="Qurate Logo">
+                </a>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/qurateuk/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Qurate. All Rights Reserved. Built with a passion for innovation.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -77,9 +77,8 @@
             overflow: hidden;
         }
 
-        /* Header */
 header {
-    padding: 5px 0; /* REDUCED: Makes the header shorter */
+    padding: 2px 0; /* REDUCED: Less padding makes the logo appear larger */
     background-color: rgba(255, 255, 255, 0.95);
     position: fixed;
     width: 100%;
@@ -91,13 +90,20 @@ header {
 }
 
 header.scrolled {
-    padding: 3px 0; /* REDUCED: Makes the header even shorter when scrolling */
+    padding: 1px 0; /* REDUCED: Minimal padding when scrolled */
     box-shadow: 0 3px 20px rgba(59, 17, 94, 0.07);
 }
 
-.logo img { /* ADD THIS ENTIRE BLOCK */
-    height: 65px; /* Sets a new, more prominent height for the logo */
-    transition: height 0.3s ease; /* Optional: adds a smooth transition effect */
+.logo img {
+    height: 75px; /* INCREASED: A slightly larger logo height */
+    transition: height 0.3s ease;
+}
+
+/* --- Responsive adjustment for smaller screens --- */
+@media (max-width: 767px) {
+    .logo img {
+        height: 50px; /* Adjusted for a balanced look on mobile */
+    }
 }
 
         .header-content {
