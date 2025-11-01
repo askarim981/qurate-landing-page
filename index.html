@@ -1239,6 +1239,16 @@
                 display: none;
             }
         }
+    /* Honeypot field - hidden from humans, visible to bots */
+    .hp-field {
+        position: absolute !important;
+        left: -9999px !important;
+        width: 1px !important;
+        height: 1px !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        tab-index: -1 !important;
+    }
 
     </style>
 </head>
@@ -1671,51 +1681,108 @@
         });
     </script>
     
-    <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbyk_G51gpKt35KhyF0xGi1t1t6geKFv1EZjsKfS1fZfs8U876AG6a7ZT7bVxjFFjJhVZw/exec';
-      const innovatorForm = document.getElementById('innovator-form');
-      const respondentForm = document.getElementById('respondent-form');
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyk_G51gpKt35KhyF0xGi1t1t6geKFv1EZjsKfS1fZfs8U876AG6a7ZT7bVxjFFjJhVZw/exec';
+  const innovatorForm = document.getElementById('innovator-form');
+  const respondentForm = document.getElementById('respondent-form');
 
-      const handleFormSubmit = (form, messageElementId, successMessage) => {
-        const messageElement = document.getElementById(messageElementId);
-        
-        form.addEventListener('submit', e => {
-          e.preventDefault();
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalButtonText = submitButton.innerHTML;
+  // Add honeypot fields and timestamp to forms
+  const addHoneypotProtection = (form) => {
+    // Create honeypot field (hidden from humans, but bots will fill it)
+    const honeypot = document.createElement('input');
+    honeypot.type = 'text';
+    honeypot.name = 'website'; // Common field name that bots auto-fill
+    honeypot.className = 'hp-field';
+    honeypot.tabIndex = -1;
+    honeypot.autocomplete = 'off';
+    honeypot.setAttribute('aria-hidden', 'true');
+    
+    // Create timestamp field (to detect submissions that are too fast)
+    const timestamp = document.createElement('input');
+    timestamp.type = 'hidden';
+    timestamp.name = 'form_timestamp';
+    timestamp.value = Date.now();
+    
+    form.appendChild(honeypot);
+    form.appendChild(timestamp);
+  };
 
-          submitButton.disabled = true;
-          submitButton.innerHTML = 'Submitting...';
-          messageElement.textContent = '';
-          messageElement.className = 'form-message';
+  const validateSubmission = (form) => {
+    // Check if honeypot field is filled (bot indicator)
+    const honeypotField = form.querySelector('[name="website"]');
+    if (honeypotField && honeypotField.value !== '') {
+      console.log('Bot detected: honeypot field filled');
+      return false;
+    }
+    
+    // Check if form was submitted too quickly (less than 2 seconds)
+    const timestampField = form.querySelector('[name="form_timestamp"]');
+    if (timestampField) {
+      const formLoadTime = parseInt(timestampField.value);
+      const currentTime = Date.now();
+      const timeSpent = (currentTime - formLoadTime) / 1000; // Convert to seconds
+      
+      if (timeSpent < 2) {
+        console.log('Bot detected: form submitted too quickly');
+        return false;
+      }
+    }
+    
+    return true;
+  };
 
-          fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => response.json())
-            .then(data => {
-              if (data.result === 'success') {
-                messageElement.textContent = successMessage; 
-                messageElement.classList.add('success');
-                form.reset();
-              } else {
-                throw new Error(data.message || 'An unknown error occurred.');
-              }
-            })
-            .catch(error => {
-              messageElement.textContent = 'Oops! Something went wrong. Please try again.';
-              messageElement.classList.add('error');
-              console.error('Error!', error.message);
-            })
-            .finally(() => {
-              submitButton.disabled = false;
-              submitButton.innerHTML = originalButtonText;
-            });
+  const handleFormSubmit = (form, messageElementId, successMessage) => {
+    const messageElement = document.getElementById(messageElementId);
+    
+    // Add honeypot protection when page loads
+    addHoneypotProtection(form);
+    
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      // Validate submission before processing
+      if (!validateSubmission(form)) {
+        // Silently reject bot submissions (don't show error to bot)
+        console.log('Submission rejected: bot detected');
+        return;
+      }
+      
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Submitting...';
+      messageElement.textContent = '';
+      messageElement.className = 'form-message';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === 'success') {
+            messageElement.textContent = successMessage; 
+            messageElement.classList.add('success');
+            form.reset();
+            // Re-add honeypot protection after reset
+            addHoneypotProtection(form);
+          } else {
+            throw new Error(data.message || 'An unknown error occurred.');
+          }
+        })
+        .catch(error => {
+          messageElement.textContent = 'Oops! Something went wrong. Please try again.';
+          messageElement.classList.add('error');
+          console.error('Error!', error.message);
+        })
+        .finally(() => {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
         });
-      };
+    });
+  };
 
-      handleFormSubmit(innovatorForm, 'innovator-form-message', 'Thank you for signing up! This is the start of something big...');
-      handleFormSubmit(respondentForm, 'respondent-form-message', "You're in! Your voice will help decide which ideas become reality. We'll reach out with opportunities soon.");
-
-    </script>
+  handleFormSubmit(innovatorForm, 'innovator-form-message', 'Thank you for signing up! This is the start of something big...');
+  handleFormSubmit(respondentForm, 'respondent-form-message', "You're in! Your voice will help decide which ideas become reality. We'll reach out with opportunities soon.");
+</script>
 
 </body>
 </html>
